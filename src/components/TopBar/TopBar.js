@@ -3,11 +3,31 @@ import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+
+import TopBarMenu from './TopBarMenu';
+import useMenu from '../../hooks/useMenu.hook';
 
 const TopBar = () => {
+  const [{ anchorEl, isOpen }, { handleClose, handleOpen }] = useMenu();
+
   return (
     <AppBar position="static">
+      <TopBarMenu
+        anchorEl={anchorEl}
+        handleClose={handleClose}
+        isOpen={isOpen}
+      />
       <Toolbar>
+        <IconButton
+          edge="start"
+          color="inherit"
+          aria-label="menu"
+          onClick={handleOpen}
+        >
+          <MenuIcon />
+        </IconButton>
         <Typography
           variant="h6"
           color="inherit"

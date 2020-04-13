@@ -1,4 +1,4 @@
-# Address book by s3c0ndd
+# Address book by s3c0nDD
 
 This is a React app with some basic online address book functionality.
 

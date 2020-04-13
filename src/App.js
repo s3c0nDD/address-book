@@ -1,20 +1,24 @@
 import React from 'react';
 
+import { BrowserRouter as Router } from "react-router-dom";
+
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Box from '@material-ui/core/Box';
 
 import TopBar from './components/TopBar';
-import UsersGrid from './components/UsersGrid';
+import Routes from './Routes';
 
 const App = () => {
   return (
-    <>
-      <CssBaseline />
-      <Box>
-        <TopBar />
-        <UsersGrid />
-      </Box>
-    </>
+    <Router>
+      <>
+        <CssBaseline />
+        <Box>
+          <TopBar />
+          <Routes />
+        </Box>
+      </>
+    </Router>
   );
 };
 

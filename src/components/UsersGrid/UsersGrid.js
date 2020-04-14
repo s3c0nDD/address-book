@@ -1,44 +1,56 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-
-import { getUser } from '../../services/api.service';
 import { makeStyles } from '@material-ui/core/styles';
 
+import useContainer from './useContainer';
+import UsersGridItem from './UsersGridItem';
+
 const useStyles = makeStyles((theme) => ({
-  root: {
-    height: 100
+  button: {
+    marginTop: 50,
+    marginBottom: 50
   }
 }));
 
 const UsersGrid = () => {
   const classes = useStyles();
-  const [users, setUsers] = useState();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await getUser();
-      console.log('users', result);
-      setUsers(result);
-    };
-
-    fetchData();
-  }, []);
+  const [{ users }, { doFetchUsers }] = useContainer();
 
   return (
-    <Grid
-      className={classes.root}
-      container
-      justify="center"
-      alignItems="center"
-    >
-      <Grid item>
-        <Button variant="contained" color="primary">
-          Hello World
-        </Button>
+    <>
+      <Grid
+        container
+        justify="center"
+        alignItems="center"
+      >
+        <Grid item>
+          <Button
+            className={classes.button}
+            variant="contained"
+            color="primary"
+            onClick={() => doFetchUsers()}>
+            Fetch moar users!
+          </Button>
+        </Grid>
       </Grid>
-    </Grid>
+      <Grid
+        container
+        direction="column"
+        justify="center"
+        alignItems="center"
+      >
+        {users.map((user, index) => (
+          <UsersGridItem
+            key={user.email}
+            user={user}
+            index={index}
+          />
+        ))}
+      </Grid>
+    </>
   );
 };
 

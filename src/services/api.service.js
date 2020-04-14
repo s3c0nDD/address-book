@@ -5,7 +5,7 @@ import {
   DEFAULT_USERS_COUNT
 } from './api.config';
 
-export const getUser = ({
+export const getUsers = ({
   usersCount = DEFAULT_USERS_COUNT
 } = {}) => {
   return axios.get(API_URL, {

@@ -6,8 +6,8 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 
+import useMenu from '../../hooks/useMenu';
 import TopBarMenu from './TopBarMenu';
-import useMenu from '../../hooks/useMenu.hook';
 
 const TopBar = () => {
   const [{ anchorEl, isOpen }, { handleClose, handleOpen }] = useMenu();

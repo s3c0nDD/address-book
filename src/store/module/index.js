@@ -2,8 +2,9 @@ import appReducer from './reducer';
 
 export {
   fetchUsers,
+  openModal,
   closeModal,
-  openModal
+  toggleNationality
 } from './actions';
 
 export { appReducer };

@@ -3,7 +3,13 @@ import { ACTION_TYPES } from './constants';
 const initialState = {
   isLoading: false,
   users: [],
-  modalUser: null
+  modalUser: null,
+  nationalities: {
+    swiss: true,
+    spanish: true,
+    french: true,
+    british: true
+  }
 };
 
 const appReducer = (state = initialState, { type, payload }) => {
@@ -27,13 +33,24 @@ const appReducer = (state = initialState, { type, payload }) => {
     case ACTION_TYPES.MODAL_OPENED:
       return {
         ...state,
-        modalUser: 'opened!'
+        modalUser: payload
       };
 
     case ACTION_TYPES.MODAL_CLOSED:
       return {
         ...state,
         modalUser: null
+      };
+
+    case ACTION_TYPES.NATIONALITY_TOGGLED:
+      return {
+        ...state,
+        isLoading: initialState.isLoading,
+        users: initialState.users,
+        nationalities: {
+          ...state.nationalities,
+          [payload]: !state.nationalities[payload]
+        }
       };
 
     default: return state;

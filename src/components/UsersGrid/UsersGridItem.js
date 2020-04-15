@@ -10,7 +10,7 @@ const UsersGridItem = ({ user, index }) => {
         variant="body1"
         color="inherit"
       >
-        [{index}] {user?.name?.title} {user?.name?.first} (email: {user?.email})
+        [{index}] ({user?.nat}) {user?.name?.title} {user?.name?.first} (email: {user?.email})
       </Typography>
     </Grid>
   );

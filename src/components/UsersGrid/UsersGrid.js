@@ -7,12 +7,15 @@ import { makeStyles } from '@material-ui/core/styles';
 import useContainer from './useContainer';
 import UsersGridItem from './UsersGridItem';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
+  root: {
+    flexGrow: 1
+  },
   button: {
     marginTop: 50,
     marginBottom: 50
   }
-}));
+});
 
 const UsersGrid = () => {
   const classes = useStyles();
@@ -31,23 +34,28 @@ const UsersGrid = () => {
             className={classes.button}
             variant="contained"
             color="primary"
-            onClick={() => doFetchUsers()}>
+            onClick={doFetchUsers}>
             Fetch moar users!
           </Button>
         </Grid>
       </Grid>
       <Grid
+        className={classes.root}
         container
-        direction="column"
+        direction="row"
         justify="center"
         alignItems="center"
+        spacing={3}
       >
-        {users.map((user, index) => (
-          <UsersGridItem
-            key={user.email}
-            user={user}
-            index={index}
-          />
+        {users.map((user) => (
+          <Grid
+            item
+            key={user.id.value}
+          >
+            <UsersGridItem
+              user={user}
+            />
+          </Grid>
         ))}
       </Grid>
     </>

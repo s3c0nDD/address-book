@@ -2,13 +2,15 @@ import axios from 'axios';
 
 import {
   API_URL,
+  API_PICK_ONLY_KEYS,
   DEFAULT_USERS_COUNT,
   LANGUAGE_CODES
 } from './api.config';
 
 export const getUsers = ({
   nationalities = [],
-  usersCount = DEFAULT_USERS_COUNT
+  usersCount = DEFAULT_USERS_COUNT,
+  takeKeys = API_PICK_ONLY_KEYS
 } = {}) => {
   const nationalitiesCodes = nationalities.map((name) => {
     const mapping = LANGUAGE_CODES[name];
@@ -20,6 +22,7 @@ export const getUsers = ({
 
   return axios.get(API_URL, {
     params: {
+      ...(takeKeys && { inc: takeKeys.join(',') }),
       ...(usersCount && { results: usersCount }),
       ...(nationsQueryParam && { nat: nationsQueryParam })
     }

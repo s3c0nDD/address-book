@@ -10,6 +10,8 @@ import PersonIcon from '@material-ui/icons/Person';
 import EmailIcon from '@material-ui/icons/Email';
 import { makeStyles } from '@material-ui/core/styles';
 
+import useContainer from '../UserModal/useContainer';
+
 const useStyles = makeStyles({
   root: {
     maxWidth: 260
@@ -22,11 +24,13 @@ const useStyles = makeStyles({
 const UsersGridItem = ({ user }) => {
   const classes = useStyles();
 
-  const fullName = `${user?.name.first} ${user?.name.last}`;
+  const [, { doOpenModal }] = useContainer();
 
   const handleClick = () => {
-    console.log('Hi from', fullName);
+    doOpenModal(user);
   };
+
+  const fullName = `${user?.name.first} ${user?.name.last}`;
 
   return (
     <Card className={classes.root}>

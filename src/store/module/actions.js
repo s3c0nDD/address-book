@@ -23,10 +23,10 @@ export const fetchUsers = () => async (dispatch, getState)  => {
   });
 };
 
-export const openModal = () => async (dispatch, getState)  => {
+export const openModal = (user) => async (dispatch, getState)  => {
   dispatch({
     type: ACTION_TYPES.MODAL_OPENED,
-    payload: 'opened!'
+    payload: user
   });
 };
 

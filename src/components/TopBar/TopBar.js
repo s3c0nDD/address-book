@@ -10,7 +10,7 @@ import useMenu from '../../hooks/useMenu';
 import TopBarMenu from './TopBarMenu';
 
 const TopBar = () => {
-  const [{ anchorEl, isOpen }, { handleClose, handleOpen }] = useMenu();
+  const { anchorEl, isOpen, handleClose, handleOpen } = useMenu();
 
   return (
     <AppBar position="static">

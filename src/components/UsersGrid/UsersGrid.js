@@ -1,5 +1,4 @@
-import React from 'react';
-import { onlyUpdateForKeys } from 'recompose';
+import React, { memo } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
 import Button from '@material-ui/core/Button';
@@ -17,7 +16,11 @@ const useStyles = makeStyles({
   }
 });
 
-const UsersGrid = ({ users, onOpenModal, onFetchUsers }) => {
+const shouldNotRerender = (prevProps, nextProps) => {
+  return prevProps.users === nextProps.users;
+};
+
+const UsersGrid = memo(({ users, onOpenModal, onFetchUsers }) => {
   const classes = useStyles();
 
   return (
@@ -61,8 +64,6 @@ const UsersGrid = ({ users, onOpenModal, onFetchUsers }) => {
       )}
     </>
   );
-};
+}, shouldNotRerender);
 
-export default onlyUpdateForKeys(['users'])(
-  UsersGrid
-);
+export default UsersGrid;

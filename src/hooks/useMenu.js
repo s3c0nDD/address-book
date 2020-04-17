@@ -9,7 +9,7 @@ const useMenu = () => {
 
   const handleClose = () => { setAnchorEl(null) };
 
-  return [{ anchorEl, isOpen }, { handleClose, handleOpen }]
+  return { anchorEl, isOpen, handleClose, handleOpen }
 };
 
 export default useMenu;

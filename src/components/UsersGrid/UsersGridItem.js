@@ -1,5 +1,4 @@
-import React, { useMemo } from 'react';
-import { onlyUpdateForKeys } from 'recompose';
+import React, { useMemo, memo } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
 import Grid from '@material-ui/core/Grid';
@@ -20,7 +19,11 @@ const useStyles = makeStyles({
   }
 });
 
-const UsersGridItem = ({ user, onOpenModal }) => {
+const shouldNotRerender = (prevProps, nextProps) => {
+  return prevProps.user === nextProps.user;
+};
+
+const UsersGridItem = memo(({ user, onOpenModal }) => {
   const classes = useStyles();
 
   const handleClick = () => {
@@ -89,8 +92,6 @@ const UsersGridItem = ({ user, onOpenModal }) => {
       </CardActionArea>
     </Card>
   );
-};
+}, shouldNotRerender);
 
-export default onlyUpdateForKeys(['user'])(
-  UsersGridItem
-);
+export default UsersGridItem;

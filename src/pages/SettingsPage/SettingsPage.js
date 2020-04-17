@@ -1,20 +1,23 @@
 import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
 
+import useNationalitiesContainer from './useNationalitiesContainer';
 import NationalitySwitchGroup from '../../components/NationalitySwitchGroup';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
   textWrapper: {
     marginTop: 50,
     marginBottom: 50
   }
-}));
+});
 
 const SettingsPage = () => {
   const classes = useStyles();
+
+  const { nationalities, doToggleNationality } = useNationalitiesContainer();
 
   return (
     <Grid
@@ -35,7 +38,10 @@ const SettingsPage = () => {
         </Typography>
       </Grid>
       <Grid item>
-        <NationalitySwitchGroup />
+        <NationalitySwitchGroup
+          nationalities={nationalities}
+          onToggleNationality={doToggleNationality}
+        />
       </Grid>
     </Grid>
   );

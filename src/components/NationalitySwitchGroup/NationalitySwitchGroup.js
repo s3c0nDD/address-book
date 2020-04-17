@@ -1,19 +1,18 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import FormControl from '@material-ui/core/FormControl';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormLabel from '@material-ui/core/FormLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 
-import useContainer from './useContainer';
 import NationalitySwitch from './NationalitySwitch';
 
-const NationalitySwitchGroup = () => {
-  const [{ nationalities }, { doToggleNationality }] = useContainer();
-
+const NationalitySwitchGroup = ({ nationalities, onToggleNationality }) => {
   const handleChange = (event) => {
-    doToggleNationality(event.target.name);
+    onToggleNationality(event.target.name);
   };
+
+  const styleHelperText = useMemo(() => ({ maxWidth: 400 }), []);
 
   return (
     <FormControl component="fieldset">
@@ -31,7 +30,7 @@ const NationalitySwitchGroup = () => {
         ))}
       </FormGroup>
       <FormHelperText
-        style={{ maxWidth: 400 }}
+        style={styleHelperText}
       >
         Please choose at least 1 nationality.
         Remember that if you toggle any switch, all

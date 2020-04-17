@@ -1,10 +1,10 @@
 import React from 'react';
+import { onlyUpdateForKeys } from 'recompose';
+import { makeStyles } from '@material-ui/core/styles';
 
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
 
-import useContainer from './useContainer';
 import UsersGridItem from './UsersGridItem';
 
 const useStyles = makeStyles({
@@ -17,10 +17,8 @@ const useStyles = makeStyles({
   }
 });
 
-const UsersGrid = () => {
+const UsersGrid = ({ users, onOpenModal, onFetchUsers }) => {
   const classes = useStyles();
-
-  const [{ users }, { doFetchUsers }] = useContainer();
 
   return (
     <>
@@ -34,32 +32,37 @@ const UsersGrid = () => {
             className={classes.button}
             variant="contained"
             color="primary"
-            onClick={doFetchUsers}>
+            onClick={onFetchUsers}>
             Fetch moar users!
           </Button>
         </Grid>
       </Grid>
-      <Grid
-        className={classes.root}
-        container
-        direction="row"
-        justify="center"
-        alignItems="center"
-        spacing={3}
-      >
-        {users.map((user) => (
-          <Grid
-            item
-            key={user.id.value}
-          >
-            <UsersGridItem
-              user={user}
-            />
-          </Grid>
-        ))}
-      </Grid>
+      {!!users?.length && (
+        <Grid
+          className={classes.root}
+          container
+          direction="row"
+          justify="center"
+          alignItems="center"
+          spacing={3}
+        >
+          {users.map((user) => (
+            <Grid
+              item
+              key={user.id.value}
+            >
+              <UsersGridItem
+                user={user}
+                onOpenModal={onOpenModal}
+              />
+            </Grid>
+          ))}
+        </Grid>
+      )}
     </>
   );
 };
 
-export default UsersGrid;
+export default onlyUpdateForKeys(['users'])(
+  UsersGrid
+);

@@ -1,7 +1,7 @@
 import { ACTION_TYPES } from './constants';
 
 const initialState = {
-  isLoading: false,
+  loading: false,
   users: [],
   modalUser: null,
   nationalities: {
@@ -17,13 +17,13 @@ const appReducer = (state = initialState, { type, payload }) => {
     case ACTION_TYPES.USERS_FETCHING_STARTED:
       return {
         ...state,
-        isLoading: true
+        loading: true
       };
 
     case ACTION_TYPES.USERS_FETCHED:
       return {
         ...state,
-        isLoading: false,
+        loading: false,
         users: [
           ...state.users,
           ...payload
@@ -45,7 +45,7 @@ const appReducer = (state = initialState, { type, payload }) => {
     case ACTION_TYPES.NATIONALITY_TOGGLED:
       return {
         ...state,
-        isLoading: initialState.isLoading,
+        loading: initialState.loading,
         users: initialState.users,
         nationalities: {
           ...state.nationalities,

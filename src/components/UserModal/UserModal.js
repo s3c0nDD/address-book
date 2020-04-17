@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useMemo } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -12,30 +13,36 @@ import HomeIcon from '@material-ui/icons/Home';
 import PersonIcon from '@material-ui/icons/Person';
 import PhoneAndroidIcon from '@material-ui/icons/PhoneAndroid';
 import PhoneIcon from '@material-ui/icons/Phone';
-import { makeStyles } from '@material-ui/core/styles';
 
-import useContainer from './useContainer';
 import UserModalTypographyGrid, { UserModalTypography } from './UserModalTypographyGrid';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
+  card: {
+    borderRadius: 0
+  },
   media: {
     height: 340
+  },
+  content: {
+    margin: theme.spacing(2)
   }
-});
+}));
 
-const UserModal = () => {
+const UserModal = ({ user, onCloseModal }) => {
   const classes = useStyles();
-  const [{ user, isOpen }, { doCloseModal }] = useContainer();
+
+  const isOpen = useMemo(() => Boolean(user), [user]);
+  const fullNameWithTitle = useMemo(() => {
+    return `${user?.name?.title} ${user?.name?.first} ${user?.name?.last}`;
+  }, [user]);
 
   if (!user) { return null; }
-
-  const fullNameWithTitle = `${user.name.title} ${user.name.first} ${user.name.last}`;
 
   return (
     <Dialog
       fullWidth={true}
       maxWidth={'xs'}
-      onClose={doCloseModal}
+      onClose={onCloseModal}
       aria-labelledby="user-dialog-title"
       open={isOpen}
     >
@@ -43,13 +50,13 @@ const UserModal = () => {
         Details
       </DialogTitle>
 
-      <Card className={classes.root}>
+      <Card className={classes.card}>
         <CardMedia
           className={classes.media}
           image={user.picture.large}
           title={`${fullNameWithTitle} face photo`}
         />
-        <CardContent>
+        <CardContent className={classes.content}>
           <Typography
             gutterBottom
             variant="h4"

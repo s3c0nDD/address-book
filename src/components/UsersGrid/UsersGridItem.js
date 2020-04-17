@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useMemo } from 'react';
+import { onlyUpdateForKeys } from 'recompose';
+import { makeStyles } from '@material-ui/core/styles';
 
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
@@ -8,9 +10,6 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import PersonIcon from '@material-ui/icons/Person';
 import EmailIcon from '@material-ui/icons/Email';
-import { makeStyles } from '@material-ui/core/styles';
-
-import useContainer from '../UserModal/useContainer';
 
 const useStyles = makeStyles({
   root: {
@@ -21,16 +20,16 @@ const useStyles = makeStyles({
   }
 });
 
-const UsersGridItem = ({ user }) => {
+const UsersGridItem = ({ user, onOpenModal }) => {
   const classes = useStyles();
 
-  const [, { doOpenModal }] = useContainer();
-
   const handleClick = () => {
-    doOpenModal(user);
+    onOpenModal(user);
   };
 
-  const fullName = `${user?.name.first} ${user?.name.last}`;
+  const fullName = useMemo(() => {
+    return `${user?.name.first} ${user?.name.last}`;
+  }, [user]);
 
   return (
     <Card className={classes.root}>
@@ -92,4 +91,6 @@ const UsersGridItem = ({ user }) => {
   );
 };
 
-export default UsersGridItem;
+export default onlyUpdateForKeys(['user'])(
+  UsersGridItem
+);

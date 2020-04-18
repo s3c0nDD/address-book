@@ -1,8 +1,10 @@
-import { ACTION_TYPES } from './constants';
+import { ACTION_TYPES, CONSTANTS } from './constants';
 
 const initialState = {
   loading: false,
+  error: null,
   users: [],
+  usersCache: [],
   modalUser: null,
   nationalities: {
     swiss: true,
@@ -14,21 +16,39 @@ const initialState = {
 
 const appReducer = (state = initialState, { type, payload }) => {
   switch (type) {
+    case ACTION_TYPES.USERS_SHOW_MORE:
+      return {
+        ...state,
+        users: [
+          ...state.users,
+          ...state.usersCache.slice(0, CONSTANTS.USERS_PER_TICK)
+        ],
+        usersCache: [
+          ...state.usersCache.slice(CONSTANTS.USERS_PER_TICK)
+        ]
+      };
+
     case ACTION_TYPES.USERS_FETCHING_STARTED:
       return {
         ...state,
-        loading: true
+        loading: true,
+        error: initialState.error
       };
 
-    case ACTION_TYPES.USERS_FETCHED:
+    case ACTION_TYPES.USERS_FETCHING_SUCCESS:
       return {
         ...state,
         loading: false,
-        users: [
-          ...state.users,
-          ...payload
-        ]
+        usersCache: payload
       };
+
+    case ACTION_TYPES.USERS_FETCHING_ERROR:
+        return {
+          ...state,
+          loading: false,
+          error: payload
+        };
+
 
     case ACTION_TYPES.MODAL_OPENED:
       return {
@@ -42,11 +62,12 @@ const appReducer = (state = initialState, { type, payload }) => {
         modalUser: null
       };
 
-    case ACTION_TYPES.NATIONALITY_TOGGLED:
+    case ACTION_TYPES.NATIONALITY_SET:
       return {
         ...state,
         loading: initialState.loading,
         users: initialState.users,
+        usersCache: initialState.usersCache,
         nationalities: {
           ...state.nationalities,
           [payload]: !state.nationalities[payload]

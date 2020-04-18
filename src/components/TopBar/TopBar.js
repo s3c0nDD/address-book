@@ -13,7 +13,7 @@ const TopBar = () => {
   const { anchorEl, isOpen, handleClose, handleOpen } = useMenu();
 
   return (
-    <AppBar position="static">
+    <AppBar position="fixed">
       <TopBarMenu
         anchorEl={anchorEl}
         handleClose={handleClose}

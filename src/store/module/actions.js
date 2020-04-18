@@ -1,50 +1,23 @@
-import { ACTION_TYPES, CONSTANTS } from './constants';
-import { getUsers } from '../../services/api.service';
+import { ACTION_TYPES } from './constants';
 
-export const fetchUsers = () => async (dispatch, getState)  => {
-  dispatch({
-    type: ACTION_TYPES.USERS_FETCHING_STARTED
-  });
+export const initializeUsers = () => ({
+  type: ACTION_TYPES.INITIALIZE_REQUEST
+});
 
-  const nationalities = getState().app.nationalities;
-  const selectedNationalities = Object.keys(nationalities)
-    .filter((name) => nationalities[name]);
+export const bottomReached = () => ({
+  type: ACTION_TYPES.BOTTOM_REACHED
+});
 
-  const users = await getUsers({
-    usersCount: CONSTANTS.USERS_PER_TICK,
-    nationalities: selectedNationalities
-  });
+export const openModal = (user) => ({
+  type: ACTION_TYPES.MODAL_OPENED,
+  payload: user
+});
 
-  console.log('FETCHED USERS:', users);
+export const closeModal = () => ({
+  type: ACTION_TYPES.MODAL_CLOSED
+});
 
-  dispatch({
-    type: ACTION_TYPES.USERS_FETCHED,
-    payload: users
-  });
-};
-
-export const openModal = (user) => async (dispatch, getState)  => {
-  dispatch({
-    type: ACTION_TYPES.MODAL_OPENED,
-    payload: user
-  });
-};
-
-export const closeModal = () => async (dispatch, getState)  => {
-  dispatch({
-    type: ACTION_TYPES.MODAL_CLOSED
-  });
-};
-
-export const toggleNationality = (nationalityName) => async (dispatch, getState)  => {
-  const nationalities = getState().app.nationalities;
-  const isClickedCurrentlyOff = !nationalities[nationalityName];
-  const selectedCount = Object.values(nationalities).filter(Boolean).length;
-
-  if (isClickedCurrentlyOff || selectedCount > 1) {
-    dispatch({
-      type: ACTION_TYPES.NATIONALITY_TOGGLED,
-      payload: nationalityName
-    });
-  }
-};
+export const toggleNationality = (nationalityName) => ({
+  type: ACTION_TYPES.NATIONALITY_TOGGLE,
+  payload: nationalityName
+});

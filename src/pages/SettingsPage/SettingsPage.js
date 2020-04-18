@@ -9,7 +9,6 @@ import NationalitySwitchGroup from '../../components/NationalitySwitchGroup';
 
 const useStyles = makeStyles({
   textWrapper: {
-    marginTop: 50,
     marginBottom: 50
   }
 });

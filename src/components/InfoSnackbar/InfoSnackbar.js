@@ -3,7 +3,7 @@ import React from 'react';
 import Alert from '@material-ui/lab/Alert';
 import Snackbar from '@material-ui/core/Snackbar';
 
-const SnackbarAlert = ({ autoHideDuration, message, open }) => {
+const InfoSnackbar = ({ autoHideDuration, message, open }) => {
   return (
     <Snackbar
       autoHideDuration={autoHideDuration}
@@ -19,4 +19,4 @@ const SnackbarAlert = ({ autoHideDuration, message, open }) => {
   )
 };
 
-export default SnackbarAlert;
+export default InfoSnackbar;

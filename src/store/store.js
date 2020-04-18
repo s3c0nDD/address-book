@@ -6,15 +6,21 @@ import makeMiddlewares from './middlewares';
 const makeStore = (initialState = {}) => {
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-  return createStore(
+  const { middlewares, startRootSaga } = makeMiddlewares();
+
+  const store = createStore(
     makeReducers(),
     initialState,
     composeEnhancers(
       applyMiddleware(
-        ...makeMiddlewares()
+        ...middlewares
       )
     )
   );
+
+  startRootSaga();
+
+  return store;
 };
 
 export default makeStore;

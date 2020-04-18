@@ -6,7 +6,10 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
   root: {
-    height: 200
+    height: 200,
+  },
+  text: {
+    margin: '0 30px'
   }
 });
 
@@ -22,7 +25,8 @@ const UsersGrid = () => {
     >
       <Grid item>
         <Typography
-          variant="h2"
+          className={classes.text}
+          variant="h4"
           color="textSecondary"
         >
           404 Page Not Found :(

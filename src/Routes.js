@@ -1,6 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
-import CacheRoute, { CacheSwitch } from 'react-router-cache-route'
+import { Route, Switch } from 'react-router-dom';
 
 import MainPage from './pages/MainPage';
 import SettingsPage from './pages/SettingsPage';
@@ -13,8 +12,8 @@ export const ROUTES = {
 
 const Routes = () => {
   return (
-    <CacheSwitch>
-      <CacheRoute
+    <Switch>
+      <Route
         path={ROUTES.root}
         component={MainPage}
         exact
@@ -26,7 +25,7 @@ const Routes = () => {
       <Route
         component={NotFoundPage}
       />
-    </CacheSwitch>
+    </Switch>
   );
 };
 

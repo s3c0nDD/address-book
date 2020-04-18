@@ -1,10 +1,15 @@
 import appReducer from './reducer';
 
 export {
-  fetchUsers,
+  initializeUsers,
+  bottomReached,
   openModal,
   closeModal,
   toggleNationality
 } from './actions';
+
+export {
+  CONSTANTS
+} from './constants'
 
 export { appReducer };

@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/address-book/static/js/main.c87b3568.chunk.js",
-    "main.js.map": "/address-book/static/js/main.c87b3568.chunk.js.map",
+    "main.js": "/address-book/static/js/main.e543b834.chunk.js",
+    "main.js.map": "/address-book/static/js/main.e543b834.chunk.js.map",
     "runtime-main.js": "/address-book/static/js/runtime-main.992209da.js",
     "runtime-main.js.map": "/address-book/static/js/runtime-main.992209da.js.map",
     "static/js/2.e5647af1.chunk.js": "/address-book/static/js/2.e5647af1.chunk.js",
     "static/js/2.e5647af1.chunk.js.map": "/address-book/static/js/2.e5647af1.chunk.js.map",
     "index.html": "/address-book/index.html",
-    "precache-manifest.c3a48a7324c08ccd52b36df74b13c027.js": "/address-book/precache-manifest.c3a48a7324c08ccd52b36df74b13c027.js",
+    "precache-manifest.2463f7455b0299cf2b10656b64e1dd2f.js": "/address-book/precache-manifest.2463f7455b0299cf2b10656b64e1dd2f.js",
     "service-worker.js": "/address-book/service-worker.js",
     "static/js/2.e5647af1.chunk.js.LICENSE.txt": "/address-book/static/js/2.e5647af1.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.992209da.js",
     "static/js/2.e5647af1.chunk.js",
-    "static/js/main.c87b3568.chunk.js"
+    "static/js/main.e543b834.chunk.js"
   ]
 }

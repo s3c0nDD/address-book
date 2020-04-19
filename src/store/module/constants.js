@@ -14,7 +14,7 @@ const ACTION_TYPES = {
 };
 
 const CONSTANTS = {
-  USERS_PER_TICK: 200,
+  USERS_PER_TICK: 50,
   USERS_MAX_COUNT: 1000
 };
 

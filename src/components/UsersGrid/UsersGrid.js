@@ -29,6 +29,7 @@ const UsersGrid = memo(({ users, onOpenModal, onLoadMore, hasMore }) => {
         className={classes.root}
         loadMore={onLoadMore}
         hasMore={hasMore}
+        threshold={400}
       >
         <Grid
           container

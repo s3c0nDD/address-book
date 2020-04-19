@@ -56,7 +56,6 @@ export function* fetchUsers() {
       payload: error
     });
   }
-
 }
 
 export function* bottomReachedFlow() {

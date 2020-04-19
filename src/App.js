@@ -16,7 +16,7 @@ const App = () => {
 
   return (
     <Provider store={store}>
-      <Router>
+      <Router basename="/address-book">
           <>
             <CssBaseline />
             <TopBar />

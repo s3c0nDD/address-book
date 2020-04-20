@@ -1,15 +1,17 @@
 import React from 'react';
 
-import useModalContainer from './useModalContainer';
-import useUsersContainer from './useUsersContainer';
-import ErrorSnackbar from '../../components/ErrorSnackbar';
-import InfoSnackbar from '../../components/InfoSnackbar';
+import useModalContainer from '../../hooks/useModalContainer';
+import useSearchContainer from '../../hooks/useSearchContainer';
+import useUsersContainer from '../../hooks/useUsersContainer';
+import ErrorSnackbar from '../../components/Snackbars/ErrorSnackbar';
+import InfoSnackbar from '../../components/Snackbars/InfoSnackbar';
 import UserModal from '../../components/UserModal';
 import UsersGrid from '../../components/UsersGrid';
 
 const MainPage = () => {
-  const { user, isOpen, doOpenModal, doCloseModal } = useModalContainer();
-  const { error, hasMore, loading, users, doRequestMore } = useUsersContainer();
+  const { user: modalUser, doOpenModal, doCloseModal } = useModalContainer();
+  const { error, hasMore, loading: loadingUsers, users, doRequestMore } = useUsersContainer();
+  const { processing: processingSearch, foundUsers, showResults } = useSearchContainer();
 
   return (
     <>
@@ -17,17 +19,22 @@ const MainPage = () => {
         open={error}
       />
       <InfoSnackbar
-        open={loading}
+        open={loadingUsers}
         message={'Loading ... '}
       />
+      <InfoSnackbar
+        open={processingSearch}
+        message={'Searching ... '}
+      />
       <UserModal
-        user={user}
-        isOpen={isOpen}
+        user={modalUser}
         onCloseModal={doCloseModal}
       />
       <UsersGrid
         hasMore={hasMore}
         users={users}
+        usersSearched={foundUsers}
+        showSearchResults={showResults}
         onLoadMore={doRequestMore}
         onOpenModal={doOpenModal}
       />

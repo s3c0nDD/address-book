@@ -1,6 +1,8 @@
 import {
   all,
   call,
+  cancel,
+  delay,
   fork,
   put,
   race,
@@ -27,6 +29,47 @@ export function* toggleNationalityFlow({ payload }) {
 
 export function* watchNationalityClick() {
   yield takeEvery(ACTION_TYPES.NATIONALITY_TOGGLE, toggleNationalityFlow);
+}
+
+export function* searchTextChangeFlow(payload) {
+  yield put({
+    type: ACTION_TYPES.SEARCH_TEXT_SET,
+    payload
+  });
+  yield put({
+    type: ACTION_TYPES.SEARCH_TEXT_APPLY_STARTED,
+  });
+  if (!!payload?.length)  {
+    yield delay(CONSTANTS.SEARCH_DELAY_MS);
+  }
+
+
+  const usersState = yield select(state => state.app.users);
+  const searchString = yield select(state => state.app.search.searchString);
+
+  const usersVisible = usersState.filter((user) => {
+    const fullName = `${user?.name.first} ${user?.name.last}`?.toLowerCase();
+    const testString = searchString?.toLowerCase();
+    return fullName?.includes(testString)
+  });
+
+  const searchedUsers = !!searchString?.length ? usersVisible : [];
+
+  yield put({
+    type: ACTION_TYPES.SEARCH_TEXT_APPLY_SUCCESS,
+    payload: searchedUsers
+  });
+}
+
+export function* watchSearchTextChange() {
+  let task;
+  while (true) {
+    const { payload } = yield take(ACTION_TYPES.SEARCH_TEXT_CHANGE);
+    if (task) {
+      yield cancel(task);
+    }
+    task = yield fork(searchTextChangeFlow, payload);
+  }
 }
 
 export function* fetchUsers() {
@@ -64,15 +107,14 @@ export function* bottomReachedFlow() {
   const shouldSaveCache = (usersState?.length + cacheState?.length) < CONSTANTS.USERS_MAX_COUNT;
 
   const allEffects = [
+    ...(shouldSaveCache ? [fork(fetchUsers)] : []),
     put({
       type: ACTION_TYPES.USERS_SHOW_MORE
     }),
-    ...(shouldSaveCache
-      ? [fork(fetchUsers)]
-      : [put({
+    ...(!shouldSaveCache ? [put({
         type: ACTION_TYPES.USERS_FETCHING_SUCCESS,
         payload: []
-      })])
+      })] : [])
   ];
 
   yield all(allEffects);
@@ -88,7 +130,7 @@ export function* watchBottomReached() {
   }
 }
 
-export function* initializeFlow() {
+export function* watchInitialize() {
   while (true) {
     const [initialize, nationalitySet] = yield race([
       take(ACTION_TYPES.INITIALIZE_REQUEST),
@@ -107,8 +149,9 @@ export function* initializeFlow() {
 
 export default function* rootSaga() {
   yield all([
-    initializeFlow(),
+    watchInitialize(),
     watchBottomReached(),
-    watchNationalityClick()
+    watchNationalityClick(),
+    watchSearchTextChange()
   ]);
 }

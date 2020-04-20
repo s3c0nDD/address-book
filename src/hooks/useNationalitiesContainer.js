@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import { toggleNationality } from '../../store/module';
+import { toggleNationality } from '../store/module';
 
 const useNationalitiesContainer = () => {
   const dispatch = useDispatch();

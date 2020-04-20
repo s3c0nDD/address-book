@@ -5,7 +5,7 @@ import {
   CONSTANTS,
   bottomReached,
   initializeUsers
-} from '../../store/module';
+} from '../store/module';
 
 const useUsersContainer = () => {
   const dispatch = useDispatch();
@@ -14,8 +14,7 @@ const useUsersContainer = () => {
   const usersCache = useSelector(state => state.app.usersCache);
   const loading = useSelector(state => state.app.loading);
   const error = useSelector(state => state.app.error);
-
-  const hasMore = users?.length < CONSTANTS.USERS_MAX_COUNT;
+  const hasMore = (users?.length < CONSTANTS.USERS_MAX_COUNT);
 
   const doRequestMore = () => {
     dispatch(bottomReached());

@@ -5,11 +5,25 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import Box from '@material-ui/core/Box';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
+import useSearchContainer from './hooks/useSearchContainer';
 import TopBar from './components/TopBar';
 import Routes from './Routes';
 import makeStore from './store';
 
 const store = makeStore();
+
+const ConnectedTopBar = (props) => {
+  const { disabled, searchText, doSetSearchText} = useSearchContainer();
+
+  return (
+    <TopBar
+      {...props}
+      searchDisabled={disabled}
+      searchText={searchText}
+      onSearchChange={doSetSearchText}
+    />
+  )
+};
 
 const App = () => {
   const styleHelper = useMemo(() => ({ marginTop: 80 }), []);
@@ -19,9 +33,9 @@ const App = () => {
       <Router basename="/address-book">
           <>
             <CssBaseline />
-            <TopBar />
+            <ConnectedTopBar />
             <Box style={styleHelper}>
-              <Routes  />
+              <Routes />
             </Box>
           </>
       </Router>

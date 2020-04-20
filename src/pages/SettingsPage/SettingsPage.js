@@ -4,14 +4,18 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 
-import useNationalitiesContainer from './useNationalitiesContainer';
+import useNationalitiesContainer from '../../hooks/useNationalitiesContainer';
 import NationalitySwitchGroup from '../../components/NationalitySwitchGroup';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   textWrapper: {
-    marginBottom: 50
+    marginTop: 20,
+    marginBottom: 40
+  },
+  switchesWrapper: {
+    margin: `0 ${theme.spacing(4)}px`
   }
-});
+}));
 
 const SettingsPage = () => {
   const classes = useStyles();
@@ -26,17 +30,20 @@ const SettingsPage = () => {
       alignItems="center"
     >
       <Grid
-        item
         className={classes.textWrapper}
+        item
       >
         <Typography
-          variant="body1"
+          variant="h5"
           color="inherit"
         >
-          Settings page
+          Settings
         </Typography>
       </Grid>
-      <Grid item>
+      <Grid
+        className={classes.switchesWrapper}
+        item
+      >
         <NationalitySwitchGroup
           nationalities={nationalities}
           onToggleNationality={doToggleNationality}

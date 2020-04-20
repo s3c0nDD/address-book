@@ -1,10 +1,11 @@
 import appReducer from './reducer';
 
 export {
-  initializeUsers,
   bottomReached,
-  openModal,
   closeModal,
+  initializeUsers,
+  openModal,
+  searchTextChange,
   toggleNationality
 } from './actions';
 

@@ -10,14 +10,23 @@ import CardContent from '@material-ui/core/CardContent';
 import PersonIcon from '@material-ui/icons/Person';
 import EmailIcon from '@material-ui/icons/Email';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   root: {
     maxWidth: 260
   },
   media: {
-    height: 120
+    height: 80,
+    [theme.breakpoints.up('sm')]: {
+      height: 100,
+    },
+    [theme.breakpoints.up('md')]: {
+      height: 120,
+    },
+    [theme.breakpoints.up('lg')]: {
+      height: 150,
+    }
   }
-});
+}));
 
 const shouldNotRerender = (prevProps, nextProps) => {
   return prevProps.user === nextProps.user;
@@ -58,10 +67,10 @@ const UsersGridItem = memo(({ user, onOpenModal }) => {
             justify="flex-start"
             alignItems="stretch"
           >
-            <Grid item xs={2}>
+            <Grid item xs={3} md={2}>
               <PersonIcon color="primary" />
             </Grid>
-            <Grid item xs={10} zeroMinWidth>
+            <Grid item xs={9} md={10} zeroMinWidth>
               <Typography
                 noWrap
                 variant="body2"
@@ -74,10 +83,10 @@ const UsersGridItem = memo(({ user, onOpenModal }) => {
           </Grid>
 
           <Grid container>
-            <Grid item xs={2}>
+            <Grid item xs={3} md={2}>
               <EmailIcon color="primary" />
             </Grid>
-            <Grid item xs={10} zeroMinWidth>
+            <Grid item xs={9} md={10} zeroMinWidth>
               <Typography
                 noWrap
                 variant="body2"

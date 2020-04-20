@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { memo, useMemo } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
 import Card from '@material-ui/core/Card';
@@ -21,14 +21,30 @@ const useStyles = makeStyles(theme => ({
     borderRadius: 0
   },
   media: {
-    height: 340
+    height: 200,
+    [theme.breakpoints.up('sm')]: {
+      height: 260,
+    },
+    [theme.breakpoints.up('md')]: {
+      height: 300,
+    },
+    [theme.breakpoints.up('lg')]: {
+      height: 340,
+    }
   },
   content: {
-    margin: theme.spacing(2)
+    margin: theme.spacing(1),
+    [theme.breakpoints.up('sm')]: {
+      margin: theme.spacing(2),
+    },
   }
 }));
 
-const UserModal = ({ user, onCloseModal }) => {
+const shouldNotRerender = (prevProps, nextProps) => {
+  return prevProps.user === nextProps.user;
+};
+
+const UserModal = memo(({ user, onCloseModal }) => {
   const classes = useStyles();
 
   const isOpen = useMemo(() => Boolean(user), [user]);
@@ -116,6 +132,6 @@ const UserModal = ({ user, onCloseModal }) => {
       </Card>
     </Dialog>
   );
-};
+}, shouldNotRerender);
 
 export default UserModal;

@@ -1,11 +1,10 @@
-import React, { memo } from 'react';
+import React, { useMemo, memo } from 'react';
 import InfiniteScroll from 'react-infinite-scroller';
 import { makeStyles } from '@material-ui/core/styles';
 
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-
-import UsersGridItem from './UsersGridItem';
+import UsersGridLayout from './UsersGridLayout';
+import UsersGridMessage from './UsersGridMessage';
+import UsersGridSearchResults from './UsersGridSearchResults';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -17,60 +16,46 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const shouldNotRerender = (prevProps, nextProps) => {
-  return prevProps.users === nextProps.users;
+  return prevProps.users === nextProps.users
+    && prevProps.usersSearched === nextProps.usersSearched;
 };
 
-const UsersGrid = memo(({ users, onOpenModal, onLoadMore, hasMore }) => {
+const UsersGrid = memo(({
+  hasMore,
+  users,
+  usersSearched,
+  showSearchResults,
+  onOpenModal,
+  onLoadMore
+}) => {
   const classes = useStyles();
+
+  const scrollDisplayStyle = useMemo(
+    () => (showSearchResults ? { display: 'none' } : {}),
+    [showSearchResults]
+  );
 
   return (
     <>
+      {showSearchResults && <UsersGridSearchResults
+        users={usersSearched}
+        onOpenModal={onOpenModal}
+      />}
       <InfiniteScroll
         className={classes.root}
+        style={scrollDisplayStyle}
         loadMore={onLoadMore}
         hasMore={hasMore}
-        threshold={400}
+        threshold={500}
       >
-        <Grid
-          container
-          direction="row"
-          justify="center"
-          alignItems="center"
-          spacing={4}
-        >
-          {users?.map((user, index) => (
-            <Grid
-              item
-              key={user.id.value}
-              xs={6}
-              sm={4}
-              md={3}
-              lg={2}
-            >
-              {index}
-              <UsersGridItem
-                user={user}
-                onOpenModal={onOpenModal}
-              />
-            </Grid>
-          ))}
-        </Grid>
-        {!hasMore && <Grid
+        <UsersGridLayout
+          users={users}
+          onOpenModal={onOpenModal}
+        />
+        {!hasMore && <UsersGridMessage
           className={classes.catalogEnd}
-          container
-          justify="center"
-          alignItems="center"
-          spacing={4}
-        >
-          <Grid item>
-            <Typography
-              variant="h4"
-              color="textSecondary"
-            >
-              End of users catalog
-            </Typography>
-          </Grid>
-        </Grid>}
+          message={'End of users catalog'}
+        />}
       </InfiniteScroll>
     </>
   );

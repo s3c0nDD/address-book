@@ -5,6 +5,11 @@ const initialState = {
   error: null,
   users: [],
   usersCache: [],
+  search: {
+    users: [],
+    processing: false,
+    searchString: ''
+  },
   modalUser: null,
   nationalities: {
     swiss: true,
@@ -62,10 +67,39 @@ const appReducer = (state = initialState, { type, payload }) => {
         modalUser: null
       };
 
+    case ACTION_TYPES.SEARCH_TEXT_SET:
+      return {
+        ...state,
+        search: {
+          ...state.search,
+          searchString: payload
+        }
+      };
+
+    case ACTION_TYPES.SEARCH_TEXT_APPLY_STARTED:
+      return {
+        ...state,
+        search: {
+          ...state.search,
+          processing: true
+        }
+      };
+
+    case ACTION_TYPES.SEARCH_TEXT_APPLY_SUCCESS:
+      return {
+        ...state,
+        search: {
+          ...state.search,
+          processing: false,
+          users: payload
+        }
+      };
+
     case ACTION_TYPES.NATIONALITY_SET:
       return {
         ...state,
         loading: initialState.loading,
+        search: initialState.search,
         users: initialState.users,
         usersCache: initialState.usersCache,
         nationalities: {

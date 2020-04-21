@@ -77,6 +77,7 @@ export function* fetchUsers() {
     type: ACTION_TYPES.USERS_FETCHING_STARTED
   });
 
+  const page = yield select(state => state.app.usersPage);
   const nationalities = yield select(state => state.app.nationalities);
   const selectedNationalities = Object.keys(nationalities)
     .filter((name) => nationalities[name]);
@@ -84,7 +85,8 @@ export function* fetchUsers() {
   try {
     const cache = yield call(getUsers ,{
       usersCount: CONSTANTS.USERS_PER_TICK,
-      nationalities: selectedNationalities
+      nationalities: selectedNationalities,
+      page
     });
 
     yield put({

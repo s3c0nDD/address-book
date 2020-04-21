@@ -4,6 +4,7 @@ const initialState = {
   loading: false,
   error: null,
   users: [],
+  usersPage: 1,
   usersCache: [],
   search: {
     users: [],
@@ -44,7 +45,8 @@ const appReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         loading: false,
-        usersCache: payload
+        usersCache: payload,
+        usersPage: state.usersPage + 1
       };
 
     case ACTION_TYPES.USERS_FETCHING_ERROR:
@@ -101,6 +103,7 @@ const appReducer = (state = initialState, { type, payload }) => {
         loading: initialState.loading,
         users: initialState.users,
         usersCache: initialState.usersCache,
+        usersPage: initialState.usersPage,
         search: initialState.search,
         modalUser: initialState.modalUser,
         nationalities: {

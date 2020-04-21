@@ -13,17 +13,19 @@ import {
  * @async
  *
  * @param {array} [nationalities] list of nationalities of fetched users
- * @param {number} [usersCount=CONFIG.DEFAULT_USERS_COUNT] users count to fetch
+ * @param {number} [page] page to be fetched when used with seed
  * @param {string} [seed=CONFIG.SEED_STRING]
  * @param {array<string>} [takeKeys=CONFIG.API_PICK_ONLY_KEYS] list of keys to take from user entity
+ * @param {number} [usersCount=CONFIG.DEFAULT_USERS_COUNT] users count to fetch
  *
  * @returns {Promise<Array>} promise of fetched users
  */
 export const getUsers = ({
   nationalities = [],
-  usersCount = DEFAULT_USERS_COUNT,
+  page,
   seed = SEED_STRING,
-  takeKeys = API_PICK_ONLY_KEYS
+  takeKeys = API_PICK_ONLY_KEYS,
+  usersCount = DEFAULT_USERS_COUNT,
 } = {}) => {
   const nationalitiesCodes = nationalities.map((name) => {
     const mapping = LANGUAGE_CODES[name];
@@ -38,7 +40,7 @@ export const getUsers = ({
       ...(takeKeys && { inc: takeKeys.join(',') }),
       ...(usersCount && { results: usersCount }),
       ...(nationsQueryParam && { nat: nationsQueryParam }),
-      ...(seed && { seed })
+      ...(seed && { seed, page })
     }
   })
     .then(response => {

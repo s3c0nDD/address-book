@@ -1,7 +1,7 @@
 import { createLogger } from 'redux-logger';
 import createSagaMiddleware from 'redux-saga'
 
-import rootSaga from './module/sagas';
+import { rootSaga } from './module';
 
 const sagaMiddleware = createSagaMiddleware();
 

@@ -1,3 +1,5 @@
+import rootSaga from './sagas';
+
 import appReducer from './reducer';
 
 export {
@@ -13,4 +15,7 @@ export {
   CONSTANTS
 } from './constants'
 
-export { appReducer };
+export {
+  appReducer,
+  rootSaga
+};

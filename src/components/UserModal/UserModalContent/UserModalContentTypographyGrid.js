@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 
-const UserModalTypography = ({ text }) => (
+const UserModalContentTypography = ({ text }) => (
   <Typography
     variant="body2"
     color="textSecondary"
@@ -14,7 +14,7 @@ const UserModalTypography = ({ text }) => (
   </Typography>
 );
 
-const UserModalTypographyGrid = ({ IconComponent, CustomContent, text, ...props }) => {
+const UserModalContentTypographyGrid = ({ IconComponent, CustomContent, text, ...props }) => {
   return (
     <Grid container {...props}>
       <Grid item xs={2}>
@@ -22,7 +22,7 @@ const UserModalTypographyGrid = ({ IconComponent, CustomContent, text, ...props 
       </Grid>
       <Grid item xs={10}>
         {text
-          ? <UserModalTypography text={text} />
+          ? <UserModalContentTypography text={text} />
           : CustomContent
         }
       </Grid>
@@ -30,19 +30,19 @@ const UserModalTypographyGrid = ({ IconComponent, CustomContent, text, ...props 
   );
 };
 
-export default UserModalTypographyGrid;
+export default UserModalContentTypographyGrid;
 
 export {
-  UserModalTypography
+  UserModalContentTypography
 }
 
-UserModalTypographyGrid.propTypes = {
+UserModalContentTypographyGrid.propTypes = {
   IconComponent: PropTypes.element.isRequired,
   CustomContent: PropTypes.element,
   text: PropTypes.string,
   props: PropTypes.arrayOf(PropTypes.any)
 };
 
-UserModalTypography.propTypes = {
+UserModalContentTypography.propTypes = {
   text: PropTypes.string.isRequired,
 };

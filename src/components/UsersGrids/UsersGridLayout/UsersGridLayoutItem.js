@@ -32,7 +32,7 @@ const shouldNotRerender = (prevProps, nextProps) => {
   return prevProps.user === nextProps.user;
 };
 
-const UsersGridItem = memo(({ user, onOpenModal }) => {
+const UsersGridLayoutItem = memo(({ user, onOpenModal }) => {
   const classes = useStyles();
 
   const handleClick = () => {
@@ -103,4 +103,4 @@ const UsersGridItem = memo(({ user, onOpenModal }) => {
   );
 }, shouldNotRerender);
 
-export default UsersGridItem;
+export default UsersGridLayoutItem;

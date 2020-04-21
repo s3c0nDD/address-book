@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 
 import Grid from '@material-ui/core/Grid';
 
-import UsersGridItem from './UsersGridItem';
+import UsersGridLayoutItem from './UsersGridLayoutItem';
 
 const shouldNotRerender = (prevProps, nextProps) => {
   return prevProps.users === nextProps.users;
@@ -27,7 +27,7 @@ const UsersGridLayout = memo(({ users, onOpenModal }) => {
           lg={2}
         >
           {index}
-          <UsersGridItem
+          <UsersGridLayoutItem
             user={user}
             onOpenModal={onOpenModal}
           />

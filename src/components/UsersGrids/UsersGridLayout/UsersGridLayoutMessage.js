@@ -3,7 +3,7 @@ import React  from 'react';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
-const UsersGridMessage = ({ className, message }) => {
+const UsersGridLayoutMessage = ({ className, message }) => {
   return (
     <Grid
       className={className}
@@ -24,4 +24,4 @@ const UsersGridMessage = ({ className, message }) => {
   );
 };
 
-export default UsersGridMessage;
+export default UsersGridLayoutMessage;

@@ -99,9 +99,10 @@ const appReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         loading: initialState.loading,
-        search: initialState.search,
         users: initialState.users,
         usersCache: initialState.usersCache,
+        search: initialState.search,
+        modalUser: initialState.modalUser,
         nationalities: {
           ...state.nationalities,
           [payload]: !state.nationalities[payload]

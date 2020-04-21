@@ -3,15 +3,17 @@ import React from 'react';
 import useModalContainer from '../../hooks/useModalContainer';
 import useSearchContainer from '../../hooks/useSearchContainer';
 import useUsersContainer from '../../hooks/useUsersContainer';
+
 import ErrorSnackbar from '../../components/Snackbars/ErrorSnackbar';
 import InfoSnackbar from '../../components/Snackbars/InfoSnackbar';
+import UsersGridInfinite from '../../components/UsersGrids/UsersGridInfinite';
+import UsersGridSearched from '../../components/UsersGrids/UsersGridSearched';
 import UserModal from '../../components/UserModal';
-import UsersGrid from '../../components/UsersGrid';
 
 const MainPage = () => {
   const { user: modalUser, doOpenModal, doCloseModal } = useModalContainer();
   const { error, hasMore, loading: loadingUsers, users, doRequestMore } = useUsersContainer();
-  const { processing: processingSearch, foundUsers, showResults } = useSearchContainer();
+  const { processing: processingSearch, foundUsers, showResults: showSearchResults} = useSearchContainer();
 
   return (
     <>
@@ -30,11 +32,16 @@ const MainPage = () => {
         user={modalUser}
         onCloseModal={doCloseModal}
       />
-      <UsersGrid
+      <UsersGridSearched
+        processing={processingSearch}
+        show={showSearchResults}
+        users={foundUsers}
+        onOpenModal={doOpenModal}
+      />
+      <UsersGridInfinite
         hasMore={hasMore}
+        hideView={showSearchResults}
         users={users}
-        usersSearched={foundUsers}
-        showSearchResults={showResults}
         onLoadMore={doRequestMore}
         onOpenModal={doOpenModal}
       />

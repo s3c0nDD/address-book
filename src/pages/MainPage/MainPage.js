@@ -12,13 +12,13 @@ import UserModal from '../../components/UserModal';
 
 const MainPage = () => {
   const { user: modalUser, doOpenModal, doCloseModal } = useModalContainer();
-  const { error, hasMore, loading: loadingUsers, users, doRequestMore } = useUsersContainer();
+  const { error: loadingError, hasMore, loading: loadingUsers, users, doRequestMore } = useUsersContainer();
   const { processing: processingSearch, foundUsers, showResults: showSearchResults} = useSearchContainer();
 
   return (
     <>
       <ErrorSnackbar
-        open={error}
+        open={!!loadingError}
       />
       <InfoSnackbar
         open={loadingUsers}

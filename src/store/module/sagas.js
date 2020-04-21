@@ -87,8 +87,6 @@ export function* fetchUsers() {
       nationalities: selectedNationalities
     });
 
-    console.log('FETCHED USERS:', cache);
-
     yield put({
       type: ACTION_TYPES.USERS_FETCHING_SUCCESS,
       payload: cache

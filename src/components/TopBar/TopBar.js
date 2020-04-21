@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom'
 
 import AppBar from '@material-ui/core/AppBar';
@@ -31,7 +32,7 @@ const TopBar = ({ searchDisabled, searchText, onSearchChange, ...props }) => {
       <TopBarMenu
         anchorEl={anchorEl}
         handleClose={handleClose}
-        isOpen={isOpen}
+        open={isOpen}
       />
       <Toolbar>
         <IconButton
@@ -65,3 +66,10 @@ const TopBar = ({ searchDisabled, searchText, onSearchChange, ...props }) => {
 };
 
 export default TopBar;
+
+TopBar.propTypes = {
+  searchDisabled: PropTypes.bool.isRequired,
+  searchText: PropTypes.string,
+  onSearchChange: PropTypes.func.isRequired,
+  props: PropTypes.arrayOf(PropTypes.any)
+};

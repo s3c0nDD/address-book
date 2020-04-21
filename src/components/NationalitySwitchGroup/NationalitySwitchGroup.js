@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import PropTypes from 'prop-types';
 
 import FormControl from '@material-ui/core/FormControl';
 import FormHelperText from '@material-ui/core/FormHelperText';
@@ -41,3 +42,8 @@ const NationalitySwitchGroup = ({ nationalities, onToggleNationality }) => {
 };
 
 export default NationalitySwitchGroup;
+
+NationalitySwitchGroup.propTypes = {
+  nationalities: PropTypes.objectOf(PropTypes.bool).isRequired,
+  onToggleNationality: PropTypes.func.isRequired
+};

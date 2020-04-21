@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Button from '@material-ui/core/Button';
 
@@ -29,3 +30,7 @@ const ErrorSnackbar = ({ open }) => {
 };
 
 export default ErrorSnackbar;
+
+ErrorSnackbar.propTypes = {
+  open: PropTypes.bool
+};

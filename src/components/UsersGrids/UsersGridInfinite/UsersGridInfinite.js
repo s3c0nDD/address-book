@@ -1,4 +1,5 @@
 import React, { useMemo, memo } from 'react';
+import PropTypes from 'prop-types';
 import InfiniteScroll from 'react-infinite-scroller';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -53,3 +54,11 @@ const UsersGridInfinite = memo(({
 }, shouldNotRerender);
 
 export default UsersGridInfinite;
+
+UsersGridInfinite.propTypes = {
+  hasMore: PropTypes.bool,
+  users: PropTypes.array.isRequired,
+  hideView: PropTypes.bool,
+  onOpenModal: PropTypes.func.isRequired,
+  onLoadMore: PropTypes.func.isRequired
+};

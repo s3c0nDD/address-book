@@ -1,4 +1,5 @@
 import React, { useMemo, memo } from 'react';
+import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 
 import Grid from '@material-ui/core/Grid';
@@ -39,9 +40,9 @@ const UsersGridLayoutItem = memo(({ user, onOpenModal }) => {
     onOpenModal(user);
   };
 
-  const fullName = useMemo(() => {
-    return `${user?.name.first} ${user?.name.last}`;
-  }, [user]);
+  const fullName = useMemo(() => (
+    `${user.name.first} ${user.name.last}`
+  ), [user]);
 
   return (
     <Card className={classes.root}>
@@ -50,7 +51,7 @@ const UsersGridLayoutItem = memo(({ user, onOpenModal }) => {
       >
         <CardMedia
           className={classes.media}
-          image={user?.picture.large}
+          image={user.picture.large}
           title={`${fullName} face photo`}
         />
         <CardContent>
@@ -77,7 +78,7 @@ const UsersGridLayoutItem = memo(({ user, onOpenModal }) => {
                 color="textSecondary"
                 component="p"
               >
-                {user?.login.username}
+                {user.login.username}
               </Typography>
             </Grid>
           </Grid>
@@ -93,7 +94,7 @@ const UsersGridLayoutItem = memo(({ user, onOpenModal }) => {
                 color="textSecondary"
                 component="p"
               >
-                {user?.email}
+                {user.email}
               </Typography>
             </Grid>
           </Grid>
@@ -104,3 +105,20 @@ const UsersGridLayoutItem = memo(({ user, onOpenModal }) => {
 }, shouldNotRerender);
 
 export default UsersGridLayoutItem;
+
+UsersGridLayoutItem.propTypes = {
+  user: PropTypes.shape({
+    name: PropTypes.shape({
+      first: PropTypes.string.isRequired,
+      last: PropTypes.string.isRequired
+    }).isRequired,
+    picture: PropTypes.shape({
+      large: PropTypes.string.isRequired
+    }).isRequired,
+    login: PropTypes.shape({
+      username: PropTypes.string.isRequired
+    }).isRequired,
+    email: PropTypes.string.isRequired
+  }).isRequired,
+  onOpenModal: PropTypes.func.isRequired
+};

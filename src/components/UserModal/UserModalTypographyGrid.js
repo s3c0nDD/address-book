@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
@@ -34,3 +35,14 @@ export default UserModalTypographyGrid;
 export {
   UserModalTypography
 }
+
+UserModalTypographyGrid.propTypes = {
+  IconComponent: PropTypes.element.isRequired,
+  CustomContent: PropTypes.element,
+  text: PropTypes.string,
+  props: PropTypes.arrayOf(PropTypes.any)
+};
+
+UserModalTypography.propTypes = {
+  text: PropTypes.string.isRequired,
+};

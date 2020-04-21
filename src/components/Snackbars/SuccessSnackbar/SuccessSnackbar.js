@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import CommonSnackbar from '../CommonSnackbar';
 
@@ -13,3 +14,8 @@ const SuccessSnackbar = ({ open, message }) => {
 };
 
 export default SuccessSnackbar;
+
+SuccessSnackbar.propTypes = {
+  message: PropTypes.string.isRequired,
+  open: PropTypes.bool
+};

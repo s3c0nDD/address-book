@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { fade, makeStyles } from '@material-ui/core/styles';
 
 import InputBase from '@material-ui/core/InputBase';
@@ -67,3 +68,9 @@ const TopBarSearch = ({ disabled, text, onTextChange }) => {
 };
 
 export default TopBarSearch;
+
+TopBarSearch.propTypes = {
+  disabled: PropTypes.bool,
+  text: PropTypes.string,
+  onTextChange: PropTypes.func.isRequired
+};

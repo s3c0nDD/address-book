@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
@@ -21,3 +22,9 @@ const NationalitySwitch = ({ checked, handleChange, name }) => {
 };
 
 export default NationalitySwitch;
+
+NationalitySwitch.propTypes = {
+  checked: PropTypes.bool.isRequired,
+  handleChange: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+};

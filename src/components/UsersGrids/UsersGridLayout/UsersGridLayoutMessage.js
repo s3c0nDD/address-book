@@ -1,4 +1,5 @@
 import React  from 'react';
+import PropTypes from 'prop-types';
 
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
@@ -25,3 +26,8 @@ const UsersGridLayoutMessage = ({ className, message }) => {
 };
 
 export default UsersGridLayoutMessage;
+
+UsersGridLayoutMessage.propTypes = {
+  className: PropTypes.any,
+  message: PropTypes.string.isRequired
+};

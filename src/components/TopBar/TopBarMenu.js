@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import Menu from '@material-ui/core/Menu';
@@ -6,9 +7,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 
 import { ROUTES } from '../../Routes';
 
-const TopBar = (props) => {
-  const { anchorEl, handleClose, isOpen } = props;
-
+const TopBarMenu = ({ anchorEl, handleClose, open }) => {
   const originPositionObj = useMemo(() => ({
     vertical: 'top',
     horizontal: 'left',
@@ -20,7 +19,7 @@ const TopBar = (props) => {
       anchorOrigin={originPositionObj}
       keepMounted
       transformOrigin={originPositionObj}
-      open={isOpen}
+      open={open}
       onClose={handleClose}
     >
       <MenuItem
@@ -41,4 +40,10 @@ const TopBar = (props) => {
   )
 };
 
-export default TopBar;
+export default TopBarMenu;
+
+TopBarMenu.propTypes = {
+  anchorEl: PropTypes.any,
+  handleClose: PropTypes.func.isRequired,
+  open: PropTypes.bool.isRequired
+};

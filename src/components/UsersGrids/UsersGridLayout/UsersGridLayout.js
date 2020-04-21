@@ -1,4 +1,5 @@
 import React, { memo } from 'react';
+import PropTypes from 'prop-types';
 
 import Grid from '@material-ui/core/Grid';
 
@@ -17,7 +18,7 @@ const UsersGridLayout = memo(({ users, onOpenModal }) => {
       alignItems="center"
       spacing={4}
     >
-      {users?.map((user, index) => (
+      {users?.map((user) => (
         <Grid
           item
           key={user.id.value}
@@ -26,7 +27,6 @@ const UsersGridLayout = memo(({ users, onOpenModal }) => {
           md={3}
           lg={2}
         >
-          {index}
           <UsersGridLayoutItem
             user={user}
             onOpenModal={onOpenModal}
@@ -38,3 +38,8 @@ const UsersGridLayout = memo(({ users, onOpenModal }) => {
 }, shouldNotRerender);
 
 export default UsersGridLayout;
+
+UsersGridLayout.propTypes = {
+  users: PropTypes.array.isRequired,
+  onOpenModal: PropTypes.func.isRequired
+};

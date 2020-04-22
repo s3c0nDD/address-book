@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TopBar shallowly renders and matches snapshot 1`] = `
+<WithStyles(ForwardRef(AppBar))
+  position="fixed"
+>
+  <TopBarMenu
+    anchorEl={null}
+    handleClose={[Function]}
+    open={false}
+  />
+  <WithStyles(ForwardRef(Toolbar))>
+    <WithStyles(ForwardRef(IconButton))
+      aria-label="menu"
+      color="inherit"
+      edge="start"
+      onClick={[Function]}
+    >
+      <MenuIcon />
+    </WithStyles(ForwardRef(IconButton))>
+    <Hidden
+      only="xs"
+    >
+      <WithStyles(ForwardRef(Typography))
+        color="inherit"
+        variant="h6"
+      >
+        Address Book
+      </WithStyles(ForwardRef(Typography))>
+    </Hidden>
+    <TopBarSearch
+      disabled={false}
+      onTextChange={[Function]}
+      text="example search"
+    />
+  </WithStyles(ForwardRef(Toolbar))>
+</WithStyles(ForwardRef(AppBar))>
+`;

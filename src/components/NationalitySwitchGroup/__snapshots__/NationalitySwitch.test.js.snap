@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NationalitySwitch shallowly renders and matches snapshot 1`] = `
+<WithStyles(ForwardRef(FormControlLabel))
+  control={
+    <ForwardRef(WithStyles)
+      checked={false}
+      name="polish"
+      onChange={[MockFunction]}
+    />
+  }
+  label="Polish"
+/>
+`;

@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SuccessSnackbar shallowly renders and matches snapshot 1`] = `
+<CommonSnackbar
+  message="Hello world"
+  open={true}
+  severity="success"
+/>
+`;

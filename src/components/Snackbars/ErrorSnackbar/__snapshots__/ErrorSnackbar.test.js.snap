@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ErrorSnackbar shallowly renders and matches snapshot 1`] = `
+<CommonSnackbar
+  action={
+    <ForwardRef(WithStyles)
+      color="inherit"
+      onClick={[Function]}
+      size="medium"
+      variant="outlined"
+    >
+      Reload app
+    </ForwardRef(WithStyles)>
+  }
+  message="Error occurred, please click button to reload app"
+  open={true}
+  severity="error"
+/>
+`;

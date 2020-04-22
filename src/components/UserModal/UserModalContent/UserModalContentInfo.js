@@ -76,7 +76,7 @@ const UserModalContentInfo = ({ user }) => {
             </Grid>
             <Grid item xs>
               <UserModalContentTypography
-                text={`${user.location.postcode} ${user.location.city} `}
+                text={`${user.location.postcode} ${user.location.city}`}
               />
             </Grid>
             <Grid item xs>

@@ -6,16 +6,18 @@ import { rootSaga } from './module';
 const sagaMiddleware = createSagaMiddleware();
 
 const makeMiddlewares = () => {
-  const isDevelopmentMode = process.env.NODE_ENV !== 'production';
+  const isDevelopmentMode = process.env.NODE_ENV === 'development';
 
   const middlewares = [
     sagaMiddleware
   ];
 
   if (isDevelopmentMode) {
-    middlewares.push(createLogger({
-      collapsed: true
-    }));
+    middlewares.push(
+      createLogger({
+        collapsed: true
+      })
+    );
   }
 
   return {

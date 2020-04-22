@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserModalContentTypography shallowly renders and matches snapshot 1`] = `
+<WithStyles(ForwardRef(Typography))
+  color="textSecondary"
+  component="p"
+  variant="body2"
+>
+  Hello world
+</WithStyles(ForwardRef(Typography))>
+`;
+
+exports[`UserModalContentTypographyGrid shallowly renders and matches snapshot (with CustomComponent prop) 1`] = `
+<WithStyles(ForwardRef(Grid))
+  container={true}
+>
+  <WithStyles(ForwardRef(Grid))
+    item={true}
+    xs={2}
+  >
+    <div
+      className="IconComponent"
+    />
+  </WithStyles(ForwardRef(Grid))>
+  <WithStyles(ForwardRef(Grid))
+    item={true}
+    xs={10}
+  >
+    <div
+      className="CustomComponent"
+    />
+  </WithStyles(ForwardRef(Grid))>
+</WithStyles(ForwardRef(Grid))>
+`;
+
+exports[`UserModalContentTypographyGrid shallowly renders and matches snapshot 1`] = `
+<WithStyles(ForwardRef(Grid))
+  container={true}
+>
+  <WithStyles(ForwardRef(Grid))
+    item={true}
+    xs={2}
+  >
+    <div />
+  </WithStyles(ForwardRef(Grid))>
+  <WithStyles(ForwardRef(Grid))
+    item={true}
+    xs={10}
+  >
+    <UserModalContentTypography
+      text="Hello world"
+    />
+  </WithStyles(ForwardRef(Grid))>
+</WithStyles(ForwardRef(Grid))>
+`;

@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CommonSnackbar shallowly renders and matches snapshot 1`] = `
+<WithStyles(ForwardRef(Snackbar))
+  open={true}
+>
+  <WithStyles(ForwardRef(Alert))
+    severity="info"
+    variant="filled"
+  >
+    Hello world
+  </WithStyles(ForwardRef(Alert))>
+</WithStyles(ForwardRef(Snackbar))>
+`;

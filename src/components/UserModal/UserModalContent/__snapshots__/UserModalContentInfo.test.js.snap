@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserModalContentInfo shallowly renders and matches snapshot 1`] = `
+<WithStyles(ForwardRef(CardContent))
+  className="makeStyles-content-1"
+>
+  <WithStyles(ForwardRef(Typography))
+    component="h2"
+    gutterBottom={true}
+    variant="h4"
+  >
+    Mr John Doe
+  </WithStyles(ForwardRef(Typography))>
+  <UserModalContentTypographyGrid
+    IconComponent={
+      <UNDEFINED
+        color="primary"
+      />
+    }
+    text="johndoe123"
+  />
+  <UserModalContentTypographyGrid
+    IconComponent={
+      <UNDEFINED
+        color="primary"
+      />
+    }
+    text="johndoe123@google.com"
+  />
+  <UserModalContentTypographyGrid
+    IconComponent={
+      <UNDEFINED
+        color="primary"
+      />
+    }
+    text="000-111-222"
+  />
+  <UserModalContentTypographyGrid
+    IconComponent={
+      <UNDEFINED
+        color="primary"
+      />
+    }
+    text="111-222-333"
+  />
+  <UserModalContentTypographyGrid
+    CustomContent={
+      <ForwardRef(WithStyles)
+        container={true}
+        direction="column"
+      >
+        <ForwardRef(WithStyles)
+          item={true}
+          xs={true}
+        >
+          <UserModalContentTypography
+            text="Big Street 98"
+          />
+        </ForwardRef(WithStyles)>
+        <ForwardRef(WithStyles)
+          item={true}
+          xs={true}
+        >
+          <UserModalContentTypography
+            text="56789 Warsaw"
+          />
+        </ForwardRef(WithStyles)>
+        <ForwardRef(WithStyles)
+          item={true}
+          xs={true}
+        >
+          <UserModalContentTypography
+            text="Masovian / Poland"
+          />
+        </ForwardRef(WithStyles)>
+      </ForwardRef(WithStyles)>
+    }
+    IconComponent={
+      <UNDEFINED
+        color="primary"
+      />
+    }
+    alignItems="center"
+  />
+</WithStyles(ForwardRef(CardContent))>
+`;

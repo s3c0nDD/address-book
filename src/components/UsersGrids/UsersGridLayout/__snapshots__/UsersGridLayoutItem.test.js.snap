@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UsersGridLayoutItem shallowly renders and matches snapshot 1`] = `
+<WithStyles(ForwardRef(Card))
+  className="makeStyles-root-1"
+>
+  <WithStyles(ForwardRef(CardActionArea))
+    onClick={[Function]}
+  >
+    <WithStyles(ForwardRef(CardMedia))
+      className="makeStyles-media-2"
+      image="https://wwww.image.com/data/1"
+      title="John Doe face photo"
+    />
+    <WithStyles(ForwardRef(CardContent))>
+      <WithStyles(ForwardRef(Typography))
+        component="h2"
+        gutterBottom={true}
+        variant="h5"
+      >
+        John Doe
+      </WithStyles(ForwardRef(Typography))>
+      <WithStyles(ForwardRef(Grid))
+        alignItems="stretch"
+        container={true}
+        justify="flex-start"
+      >
+        <WithStyles(ForwardRef(Grid))
+          item={true}
+          md={2}
+          xs={3}
+        >
+          <PersonIcon
+            color="primary"
+          />
+        </WithStyles(ForwardRef(Grid))>
+        <WithStyles(ForwardRef(Grid))
+          item={true}
+          md={10}
+          xs={9}
+          zeroMinWidth={true}
+        >
+          <WithStyles(ForwardRef(Typography))
+            color="textSecondary"
+            component="p"
+            noWrap={true}
+            variant="body2"
+          >
+            johndoe123
+          </WithStyles(ForwardRef(Typography))>
+        </WithStyles(ForwardRef(Grid))>
+      </WithStyles(ForwardRef(Grid))>
+      <WithStyles(ForwardRef(Grid))
+        container={true}
+      >
+        <WithStyles(ForwardRef(Grid))
+          item={true}
+          md={2}
+          xs={3}
+        >
+          <EmailIcon
+            color="primary"
+          />
+        </WithStyles(ForwardRef(Grid))>
+        <WithStyles(ForwardRef(Grid))
+          item={true}
+          md={10}
+          xs={9}
+          zeroMinWidth={true}
+        >
+          <WithStyles(ForwardRef(Typography))
+            color="textSecondary"
+            component="p"
+            noWrap={true}
+            variant="body2"
+          >
+            johndoe123@google.com
+          </WithStyles(ForwardRef(Typography))>
+        </WithStyles(ForwardRef(Grid))>
+      </WithStyles(ForwardRef(Grid))>
+    </WithStyles(ForwardRef(CardContent))>
+  </WithStyles(ForwardRef(CardActionArea))>
+</WithStyles(ForwardRef(Card))>
+`;

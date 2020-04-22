@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NationalitySwitchGroup shallowly renders and matches snapshot 1`] = `
+<WithStyles(ForwardRef(FormControl))
+  component="fieldset"
+>
+  <WithStyles(ForwardRef(FormLabel))
+    component="legend"
+  >
+    Select nationalities
+  </WithStyles(ForwardRef(FormLabel))>
+  <WithStyles(ForwardRef(FormGroup))>
+    <NationalitySwitch
+      checked={true}
+      handleChange={[Function]}
+      key="polish"
+      name="polish"
+    />
+  </WithStyles(ForwardRef(FormGroup))>
+  <WithStyles(ForwardRef(FormHelperText))
+    style={
+      Object {
+        "maxWidth": 400,
+      }
+    }
+  >
+    Please choose at least 1 nationality. Remember that if you toggle any switch, all previously loaded data on main page will be removed.
+  </WithStyles(ForwardRef(FormHelperText))>
+</WithStyles(ForwardRef(FormControl))>
+`;

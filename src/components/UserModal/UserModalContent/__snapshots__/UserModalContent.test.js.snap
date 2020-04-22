@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserModalContent shallowly renders and matches snapshot 1`] = `
+<WithStyles(ForwardRef(Card))
+  className="makeStyles-card-1"
+>
+  <UserModalContentMedia
+    user={
+      Object {
+        "cell": "111-222-333",
+        "email": "johndoe123@google.com",
+        "id": Object {
+          "value": "foobar",
+        },
+        "location": Object {
+          "city": "Warsaw",
+          "country": "Poland",
+          "postcode": 56789,
+          "state": "Masovian",
+          "street": Object {
+            "name": "Big Street",
+            "number": 98,
+          },
+        },
+        "login": Object {
+          "username": "johndoe123",
+        },
+        "name": Object {
+          "first": "John",
+          "last": "Doe",
+          "title": "Mr",
+        },
+        "phone": "000-111-222",
+        "picture": Object {
+          "large": "https://wwww.image.com/data/1",
+        },
+      }
+    }
+  />
+  <UserModalContentInfo
+    user={
+      Object {
+        "cell": "111-222-333",
+        "email": "johndoe123@google.com",
+        "id": Object {
+          "value": "foobar",
+        },
+        "location": Object {
+          "city": "Warsaw",
+          "country": "Poland",
+          "postcode": 56789,
+          "state": "Masovian",
+          "street": Object {
+            "name": "Big Street",
+            "number": 98,
+          },
+        },
+        "login": Object {
+          "username": "johndoe123",
+        },
+        "name": Object {
+          "first": "John",
+          "last": "Doe",
+          "title": "Mr",
+        },
+        "phone": "000-111-222",
+        "picture": Object {
+          "large": "https://wwww.image.com/data/1",
+        },
+      }
+    }
+  />
+</WithStyles(ForwardRef(Card))>
+`;

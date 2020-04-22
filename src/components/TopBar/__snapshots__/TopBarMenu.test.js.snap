@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TopBarMenu shallowly renders and matches snapshot 1`] = `
+<WithStyles(ForwardRef(Menu))
+  anchorEl={
+    <div
+      className="anchorElement"
+    />
+  }
+  anchorOrigin={
+    Object {
+      "horizontal": "left",
+      "vertical": "top",
+    }
+  }
+  keepMounted={true}
+  onClose={[MockFunction]}
+  open={true}
+  transformOrigin={
+    Object {
+      "horizontal": "left",
+      "vertical": "top",
+    }
+  }
+>
+  <WithStyles(ForwardRef(MenuItem))
+    component={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "displayName": "Link",
+        "propTypes": Object {
+          "innerRef": [Function],
+          "onClick": [Function],
+          "replace": [Function],
+          "target": [Function],
+          "to": [Function],
+        },
+        "render": [Function],
+      }
+    }
+    onClick={[MockFunction]}
+    to="/"
+  >
+    Users Gallery
+  </WithStyles(ForwardRef(MenuItem))>
+  <WithStyles(ForwardRef(MenuItem))
+    component={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "displayName": "Link",
+        "propTypes": Object {
+          "innerRef": [Function],
+          "onClick": [Function],
+          "replace": [Function],
+          "target": [Function],
+          "to": [Function],
+        },
+        "render": [Function],
+      }
+    }
+    onClick={[MockFunction]}
+    to="/settings"
+  >
+    Settings
+  </WithStyles(ForwardRef(MenuItem))>
+</WithStyles(ForwardRef(Menu))>
+`;

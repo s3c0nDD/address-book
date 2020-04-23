@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NotFoundPage shallowly renders and matches snapshot 1`] = `
+<WithStyles(ForwardRef(Grid))
+  alignItems="center"
+  className="makeStyles-root-1"
+  container={true}
+  justify="center"
+>
+  <WithStyles(ForwardRef(Grid))
+    item={true}
+  >
+    <WithStyles(ForwardRef(Typography))
+      className="makeStyles-text-2"
+      color="textSecondary"
+      variant="h4"
+    >
+      404 Page Not Found :(
+    </WithStyles(ForwardRef(Typography))>
+  </WithStyles(ForwardRef(Grid))>
+</WithStyles(ForwardRef(Grid))>
+`;

@@ -7,7 +7,9 @@ const useNationalitiesContainer = () => {
 
   const nationalities = useSelector(state => state.app.nationalities);
 
-  const doToggleNationality = (name) => dispatch(toggleNationality(name));
+  const doToggleNationality = (name) => {
+    dispatch(toggleNationality(name));
+  };
 
   return { nationalities, doToggleNationality }
 };

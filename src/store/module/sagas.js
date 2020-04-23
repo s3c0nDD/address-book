@@ -43,7 +43,6 @@ export function* searchTextChangeFlow(payload) {
     yield delay(CONSTANTS.SEARCH_DELAY_MS);
   }
 
-
   const usersState = yield select(state => state.app.users);
   const searchString = yield select(state => state.app.search.searchString);
 

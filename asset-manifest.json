@@ -1,19 +1,29 @@
 {
   "files": {
-    "main.js": "/address-book/static/js/main.0f68ba18.chunk.js",
-    "main.js.map": "/address-book/static/js/main.0f68ba18.chunk.js.map",
-    "runtime-main.js": "/address-book/static/js/runtime-main.992209da.js",
-    "runtime-main.js.map": "/address-book/static/js/runtime-main.992209da.js.map",
-    "static/js/2.b1d047e4.chunk.js": "/address-book/static/js/2.b1d047e4.chunk.js",
-    "static/js/2.b1d047e4.chunk.js.map": "/address-book/static/js/2.b1d047e4.chunk.js.map",
+    "main.js": "/address-book/static/js/main.ad0447d0.chunk.js",
+    "main.js.map": "/address-book/static/js/main.ad0447d0.chunk.js.map",
+    "runtime-main.js": "/address-book/static/js/runtime-main.2ac7f60a.js",
+    "runtime-main.js.map": "/address-book/static/js/runtime-main.2ac7f60a.js.map",
+    "static/js/2.bff3a01b.chunk.js": "/address-book/static/js/2.bff3a01b.chunk.js",
+    "static/js/2.bff3a01b.chunk.js.map": "/address-book/static/js/2.bff3a01b.chunk.js.map",
+    "static/js/3.bd75af06.chunk.js": "/address-book/static/js/3.bd75af06.chunk.js",
+    "static/js/3.bd75af06.chunk.js.map": "/address-book/static/js/3.bd75af06.chunk.js.map",
+    "static/js/4.c7515ca9.chunk.js": "/address-book/static/js/4.c7515ca9.chunk.js",
+    "static/js/4.c7515ca9.chunk.js.map": "/address-book/static/js/4.c7515ca9.chunk.js.map",
+    "static/js/5.38847238.chunk.js": "/address-book/static/js/5.38847238.chunk.js",
+    "static/js/5.38847238.chunk.js.map": "/address-book/static/js/5.38847238.chunk.js.map",
+    "static/js/6.1e50c708.chunk.js": "/address-book/static/js/6.1e50c708.chunk.js",
+    "static/js/6.1e50c708.chunk.js.map": "/address-book/static/js/6.1e50c708.chunk.js.map",
+    "static/js/7.841b66e3.chunk.js": "/address-book/static/js/7.841b66e3.chunk.js",
+    "static/js/7.841b66e3.chunk.js.map": "/address-book/static/js/7.841b66e3.chunk.js.map",
     "index.html": "/address-book/index.html",
-    "precache-manifest.43dd71f44ebaad4863530a4c49be0912.js": "/address-book/precache-manifest.43dd71f44ebaad4863530a4c49be0912.js",
+    "precache-manifest.453f51a593e196c5605d420b2c6467b4.js": "/address-book/precache-manifest.453f51a593e196c5605d420b2c6467b4.js",
     "service-worker.js": "/address-book/service-worker.js",
-    "static/js/2.b1d047e4.chunk.js.LICENSE.txt": "/address-book/static/js/2.b1d047e4.chunk.js.LICENSE.txt"
+    "static/js/2.bff3a01b.chunk.js.LICENSE.txt": "/address-book/static/js/2.bff3a01b.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.992209da.js",
-    "static/js/2.b1d047e4.chunk.js",
-    "static/js/main.0f68ba18.chunk.js"
+    "static/js/runtime-main.2ac7f60a.js",
+    "static/js/2.bff3a01b.chunk.js",
+    "static/js/main.ad0447d0.chunk.js"
   ]
 }

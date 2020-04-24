@@ -1,10 +1,15 @@
 import {
   delay,
-  put
+  put,
+  select
 } from 'redux-saga/effects';
 
 import { ACTION_TYPES, CONSTANTS } from './constants';
 import { searchTextChangeFlow } from './sagas';
+import {
+  selectUsers,
+  selectSearchString
+} from './selectors'
 
 describe('Saga' , () => {
   let generator = null;
@@ -37,5 +42,20 @@ describe('Saga' , () => {
 
       expect(actual.value).toEqual(expected);
     });
+
+    it('should select for users in state', () => {
+      const expected = select(selectUsers);
+      const actual = generator.next();
+
+      expect(actual.value).toEqual(expected);
+    });
+
+    it('should select for searchString in state', () => {
+      const expected = select(selectSearchString);
+      const actual = generator.next();
+
+      expect(actual.value).toEqual(expected);
+    });
+
   })
 });

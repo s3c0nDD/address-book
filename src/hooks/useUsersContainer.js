@@ -4,15 +4,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   CONSTANTS,
   bottomReached,
-  initializeUsers
+  initializeUsers,
+  selectError,
+  selectLoading,
+  selectUsers
 } from '../store/module';
 
 const useUsersContainer = () => {
   const dispatch = useDispatch();
 
-  const users = useSelector(state => state.app.users);
-  const loading = useSelector(state => state.app.loading);
-  const error = useSelector(state => state.app.error);
+  const users = useSelector(selectUsers);
+  const loading = useSelector(selectLoading);
+  const error = useSelector(selectError);
   const hasMore = (users?.length < CONSTANTS.USERS_MAX_COUNT);
 
   const doRequestMore = () => {

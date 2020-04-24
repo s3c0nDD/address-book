@@ -13,9 +13,16 @@ import {
 
 import { ACTION_TYPES, CONSTANTS } from './constants';
 import { getUsers } from '../../services/api.service';
+import {
+  selectNationalities,
+  selectPage,
+  selectSearchString,
+  selectUsers,
+  selectUsersCache
+} from './selectors'
 
 export function* toggleNationalityFlow({ payload }) {
-  const nationalities = yield select(state => state.app.nationalities);
+  const nationalities = yield select(selectNationalities);
   const isClickedCurrentlyOff = !nationalities[payload];
   const selectedCount = Object.values(nationalities).filter(Boolean).length;
 
@@ -43,8 +50,8 @@ export function* searchTextChangeFlow(payload) {
     yield delay(CONSTANTS.SEARCH_DELAY_MS);
   }
 
-  const usersState = yield select(state => state.app.users);
-  const searchString = yield select(state => state.app.search.searchString);
+  const usersState = yield select(selectUsers);
+  const searchString = yield select(selectSearchString);
 
   const usersVisible = usersState.filter((user) => {
     const fullName = `${user?.name.first} ${user?.name.last}`?.toLowerCase();
@@ -76,8 +83,8 @@ export function* fetchUsers() {
     type: ACTION_TYPES.USERS_FETCHING_STARTED
   });
 
-  const page = yield select(state => state.app.usersPage);
-  const nationalities = yield select(state => state.app.nationalities);
+  const page = yield select(selectPage);
+  const nationalities = yield select(selectNationalities);
   const selectedNationalities = Object.keys(nationalities)
     .filter((name) => nationalities[name]);
 
@@ -101,8 +108,8 @@ export function* fetchUsers() {
 }
 
 export function* bottomReachedFlow() {
-  const usersState = yield select(state => state.app.users);
-  const cacheState = yield select(state => state.app.usersCache);
+  const usersState = yield select(selectUsers);
+  const cacheState = yield select(selectUsersCache);
   const shouldSaveCache = (usersState?.length + cacheState?.length) < CONSTANTS.USERS_MAX_COUNT;
 
   const allEffects = [

@@ -12,6 +12,19 @@ export {
 } from './actions';
 
 export {
+  selectError,
+  selectLoading,
+  selectModalUser,
+  selectNationalities,
+  selectPage,
+  selectSearchProcessing,
+  selectSearchString,
+  selectSearchUsers,
+  selectUsers,
+  selectUsersCache
+} from './selectors'
+
+export {
   CONSTANTS
 } from './constants'
 

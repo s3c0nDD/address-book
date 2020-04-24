@@ -41,6 +41,7 @@ export const DEFAULT_USERS_COUNT = 1;
 export const LANGUAGE_CODES = {
   british: 'GB',
   french: 'FR',
+  polish: 'PL',
   spanish: 'ES',
   swiss: 'CH'
 };

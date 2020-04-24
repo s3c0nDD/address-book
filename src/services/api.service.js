@@ -12,7 +12,7 @@ import {
  * Call API endpoint to get users.
  * @async
  *
- * @param {array} [nationalities] list of nationalities of fetched users
+ * @param {array} [nationalities=[]] list of nationalities of fetched users
  * @param {number} [page] page to be fetched when used with seed
  * @param {string} [seed=CONFIG.SEED_STRING]
  * @param {array<string>} [takeKeys=CONFIG.API_PICK_ONLY_KEYS] list of keys to take from user entity

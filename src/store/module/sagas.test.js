@@ -1,61 +1,138 @@
-import {
-  delay,
-  put,
-  select
-} from 'redux-saga/effects';
+import { expectSaga, testSaga } from 'redux-saga-test-plan';
+import * as matchers from 'redux-saga-test-plan/matchers';
+import { throwError } from 'redux-saga-test-plan/providers';
 
-import { ACTION_TYPES, CONSTANTS } from './constants';
-import { searchTextChangeFlow } from './sagas';
+import { getUsers } from '../../services/api.service';
 import {
-  selectUsers,
-  selectSearchString
+  ACTION_TYPES,
+  CONSTANTS
+} from './constants';
+import {
+  fetchUsers,
+  searchTextChangeFlow,
+  toggleNationalityFlow
+} from './sagas';
+import {
+  selectNationalities,
+  selectPage,
+  selectSearchString,
+  selectUsers
 } from './selectors'
 
 describe('Saga' , () => {
-  let generator = null;
-
-
   describe('searchTextChangeFlow', () => {
-    const exampleText = 'example';
+    it('works in flow when some search text is provided', () => {
+      const exampleText = 'maria';
+      const exampleUser = { name: { first: 'Maria', last: 'Bar' } };
 
-    beforeAll(() => {
-      generator = searchTextChangeFlow(exampleText);
+      testSaga(searchTextChangeFlow, exampleText)
+        .next()
+        .put({ type: ACTION_TYPES.SEARCH_TEXT_SET, payload: exampleText })
+        .next()
+        .put({ type: ACTION_TYPES.SEARCH_TEXT_APPLY_STARTED })
+        .next()
+        .delay(CONSTANTS.SEARCH_DELAY_MS)
+        .next()
+        .select(selectUsers)
+        .next([exampleUser])
+        .select(selectSearchString)
+        .next(exampleText)
+        .put({ type: ACTION_TYPES.SEARCH_TEXT_APPLY_SUCCESS, payload: [exampleUser] })
+        .next()
+        .isDone();
     });
 
-    it('should put SEARCH_TEXT_SET action', () => {
-      const expected = put({ type: ACTION_TYPES.SEARCH_TEXT_SET, payload: exampleText });
-      const actual = generator.next();
+    it('works in flow with empty text', () => {
+      const exampleEmptyText = '';
 
-      expect(actual.value).toEqual(expected);
+      testSaga(searchTextChangeFlow, exampleEmptyText)
+        .next()
+        .put({ type: ACTION_TYPES.SEARCH_TEXT_SET, payload: exampleEmptyText })
+        .next()
+        .put({ type: ACTION_TYPES.SEARCH_TEXT_APPLY_STARTED })
+        .next()
+        .select(selectUsers)
+        .next([])
+        .select(selectSearchString)
+        .next('')
+        .put({ type: ACTION_TYPES.SEARCH_TEXT_APPLY_SUCCESS, payload: [] })
+        .next()
+        .isDone();
+    });
+  });
+
+  describe('toggleNationalityFlow', () => {
+    it('works in a flow which changes value, because there will still be another nationality set to true', () => {
+      const action = { payload: 'polish' };
+
+      testSaga(toggleNationalityFlow, action)
+        .next()
+        .select(selectNationalities)
+        .next({ polish: true, english: true })
+        .put({ type: ACTION_TYPES.NATIONALITY_SET, payload: 'polish' })
+        .next()
+        .isDone();
     });
 
-    it('should put SEARCH_TEXT_APPLY_STARTED action', () => {
-      const expected = put({ type: ACTION_TYPES.SEARCH_TEXT_APPLY_STARTED });
-      const actual = generator.next();
+    it('works in a flow which doesn\'t change value, because at least one nationality needs to be selected', () => {
+      const action = { payload: 'polish' };
 
-      expect(actual.value).toEqual(expected);
+      testSaga(toggleNationalityFlow, action)
+        .next()
+        .select(selectNationalities)
+        .next({ polish: true })
+        .isDone();
     });
 
-    it('should delay for CONSTANTS.SEARCH_DELAY_MS', () => {
-      const expected = delay(CONSTANTS.SEARCH_DELAY_MS);
-      const actual = generator.next();
+    it('works in a flow which changes value, because it was off earlier', () => {
+      const action = { payload: 'polish' };
 
-      expect(actual.value).toEqual(expected);
+      testSaga(toggleNationalityFlow, action)
+        .next()
+        .select(selectNationalities)
+        .next({ polish: false })
+        .put({ type: ACTION_TYPES.NATIONALITY_SET, payload: 'polish' })
+        .next()
+        .isDone();
+    })
+  });
+
+  describe('fetchUsers', () => {
+    const page = 2;
+    const nationalities = { polish: true };
+    const cacheMock = [{ a: 1 }, { a: 2 }];
+
+    it('saves users on success fetch', () => {
+      return expectSaga(fetchUsers)
+        .put({ type: ACTION_TYPES.USERS_FETCHING_STARTED })
+        .provide([
+          [matchers.select(selectPage), page],
+          [matchers.select(selectNationalities), nationalities],
+          [matchers.call.fn(getUsers, {
+            usersCount: CONSTANTS.USERS_PER_TICK,
+            nationalities,
+            page
+          }), cacheMock]
+        ])
+        .put({ type: ACTION_TYPES.USERS_FETCHING_SUCCESS, payload: cacheMock })
+        .run();
     });
 
-    it('should select for users in state', () => {
-      const expected = select(selectUsers);
-      const actual = generator.next();
-
-      expect(actual.value).toEqual(expected);
-    });
-
-    it('should select for searchString in state', () => {
-      const expected = select(selectSearchString);
-      const actual = generator.next();
-
-      expect(actual.value).toEqual(expected);
-    });
-
+    it('doesn\'t save users on error fetch', () => {
+      const errorRes = new Error('error');
+      return expectSaga(fetchUsers)
+        .put({ type: ACTION_TYPES.USERS_FETCHING_STARTED })
+        .provide([
+          [matchers.select(selectPage), page],
+          [matchers.select(selectNationalities), nationalities],
+          [matchers.call.fn(getUsers, {
+            usersCount: CONSTANTS.USERS_PER_TICK,
+            nationalities,
+            page
+          }), throwError(errorRes)]
+        ])
+        .put({ type: ACTION_TYPES.USERS_FETCHING_ERROR, payload: errorRes })
+        .run();
+    })
   })
 });

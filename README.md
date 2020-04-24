@@ -8,7 +8,10 @@ To run app please use below npm scripts.
 
 ## Available Scripts
 
-In the project directory, you can run:
+
+### `npm install`
+
+Installs required packages. You should use above command before any other.
 
 ### `npm start`
 
@@ -32,3 +35,7 @@ The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `npm run analyze`
+
+After building and app, you can use this command to analyze the bundle size.

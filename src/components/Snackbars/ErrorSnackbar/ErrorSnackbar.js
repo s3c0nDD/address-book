@@ -5,8 +5,16 @@ import Button from '@material-ui/core/Button';
 
 import CommonSnackbar from '../CommonSnackbar';
 
+/**
+ * Error snackbar component
+ * @param {object} props component's props
+ * @param {boolean} props.open snackbar open state
+ */
 const ErrorSnackbar = ({ open }) => {
-  const doReload = () => {
+  /**
+   * Handle reload button click
+   */
+  const onReloadButtonClick = () => {
     window.location.reload();
   };
 
@@ -17,7 +25,7 @@ const ErrorSnackbar = ({ open }) => {
           color="inherit"
           variant="outlined"
           size="medium"
-          onClick={doReload}
+          onClick={onReloadButtonClick}
         >
           Reload app
         </Button>

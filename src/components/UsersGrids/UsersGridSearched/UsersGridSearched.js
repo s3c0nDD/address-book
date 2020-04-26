@@ -16,13 +16,33 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+/**
+ * Checks props and decide if should not re-render
+ * @param {object} prevProps previous props
+ * @param {object} nextProps next props
+ * @returns {boolean}
+ */
 const shouldNotRerender = (prevProps, nextProps) => {
   return prevProps.users === nextProps.users
     && prevProps.show === nextProps.show
     && prevProps.processing === nextProps.processing;
 };
 
-const UsersGridSearched = memo(({ processing, show, users, onOpenModal, ...props }) => {
+/**
+ * User grid searched component
+ * @param {object} props component's props
+ * @param {boolean} props.processing search processing flag
+ * @param {boolean} props.show show search results flag
+ * @param {array} props.users users data
+ * @param {function} props.onOpenModal open user modal handler
+ */
+const UsersGridSearched = memo(({
+  processing,
+  show,
+  users,
+  onOpenModal,
+  ...props
+}) => {
   const classes = useStyles();
 
   const scrollToTop = useCallback(() => {

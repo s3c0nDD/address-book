@@ -8,7 +8,17 @@ import FormGroup from '@material-ui/core/FormGroup';
 
 import NationalitySwitch from './NationalitySwitch';
 
+/**
+ * Nationality switch group component
+ * @param {object} props component's props
+ * @param {object} props.nationalities nationalities state
+ * @param {function} props.onToggleNationality nationality change handler
+ */
 const NationalitySwitchGroup = ({ nationalities, onToggleNationality }) => {
+  /**
+   * Handle nationality change
+   * @param {object<SyntheticEvent>} event react event
+   */
   const handleChange = (event) => {
     onToggleNationality(event.target.name);
   };

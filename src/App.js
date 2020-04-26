@@ -25,6 +25,9 @@ const ConnectedTopBar = (props) => {
   )
 };
 
+/**
+ * Application's bootstrapping component
+ */
 const App = () => {
   const styleHelper = useMemo(() => ({ marginTop: 80 }), []);
 

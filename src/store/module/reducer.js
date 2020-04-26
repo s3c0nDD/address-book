@@ -1,5 +1,8 @@
 import { ACTION_TYPES, CONSTANTS } from './constants';
 
+/**
+ * Initial state
+ */
 const initialState = {
   loading: false,
   error: null,
@@ -20,7 +23,15 @@ const initialState = {
   }
 };
 
-const appReducer = (state = initialState, { type, payload }) => {
+/**
+ * Module app reducer
+ * @param {object} state current provided state
+ * @param {object} action action provided
+ * @param {*} action.payload action's payload
+ * @param {string} action.type action's type
+ * @returns {object} new state
+ */
+const appReducer = (state = initialState, { payload, type }) => {
   switch (type) {
     case ACTION_TYPES.USERS_SHOW_MORE:
       return {

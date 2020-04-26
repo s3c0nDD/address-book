@@ -7,6 +7,13 @@ import MenuItem from '@material-ui/core/MenuItem';
 
 import { ROUTES } from '../../Routes';
 
+/**
+ * Top bar menu component
+ * @param {object} props component's props
+ * @param {node} props.anchorEl anchor to mount menu onto
+ * @param {string} props.handleClose menu close handler
+ * @param {boolean} props.open menu open state
+ */
 const TopBarMenu = ({ anchorEl, handleClose, open }) => {
   const originPositionObj = useMemo(() => ({
     vertical: 'top',

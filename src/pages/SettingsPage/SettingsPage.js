@@ -17,6 +17,9 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+/**
+ * Settings page component
+ */
 const SettingsPage = () => {
   const classes = useStyles();
 

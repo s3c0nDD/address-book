@@ -19,6 +19,11 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+/**
+ * User modal content media component
+ * @param {object} props component's props
+ * @param {object} props.user modal user data
+ */
 const UserModalContentMedia = ({ user }) => {
   const classes = useStyles();
 

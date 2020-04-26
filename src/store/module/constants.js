@@ -1,5 +1,11 @@
+/**
+ * Module name
+ */
 const MODULE_NAME = 'APP';
 
+/**
+ * Action names config
+ */
 const ACTION_TYPES = {
   'INITIALIZE_REQUEST': `${MODULE_NAME}/INITIALIZE_REQUEST`,
   'BOTTOM_REACHED': `${MODULE_NAME}/BOTTOM_REACHED`,
@@ -17,6 +23,9 @@ const ACTION_TYPES = {
   'USERS_SHOW_MORE': `${MODULE_NAME}/USERS_SHOW_MORE`,
 };
 
+/**
+ * Module's constants
+ */
 const CONSTANTS = {
   SEARCH_DELAY_MS: 500,
   USERS_PER_TICK: 50,

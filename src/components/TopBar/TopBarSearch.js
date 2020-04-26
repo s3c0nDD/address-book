@@ -44,6 +44,13 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+/**
+ * Top bar search component
+ * @param {object} props component's props
+ * @param {boolean} props.disabled search disabled flag
+ * @param {string} props.text search text value
+ * @param {function} props.onTextChange search text change handler
+ */
 const TopBarSearch = ({ disabled, text, onTextChange }) => {
   const classes = useStyles();
 

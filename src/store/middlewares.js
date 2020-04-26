@@ -5,6 +5,10 @@ import { rootSaga } from './module';
 
 const sagaMiddleware = createSagaMiddleware();
 
+/**
+ * Make middleware
+ * @returns {object}
+ */
 const makeMiddlewares = () => {
   const isDevelopmentMode = process.env.NODE_ENV === 'development';
 

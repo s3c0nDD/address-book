@@ -6,10 +6,22 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 
 import UserModalContent from './UserModalContent';
 
+/**
+ * Checks props and decide if should not re-render
+ * @param {object} prevProps previous props
+ * @param {object} nextProps next props
+ * @returns {boolean}
+ */
 const shouldNotRerender = (prevProps, nextProps) => {
   return prevProps.user === nextProps.user;
 };
 
+/**
+ * User modal component
+ * @param {object} props component's props
+ * @param {object} props.user modal user data
+ * @param {function} props.onCloseModal modal close handler
+ */
 const UserModal = memo(({ user, onCloseModal }) => {
   const isOpen = useMemo(() => Boolean(user), [user]);
 

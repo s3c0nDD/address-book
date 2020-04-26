@@ -5,10 +5,22 @@ import Grid from '@material-ui/core/Grid';
 
 import UsersGridLayoutItem from './UsersGridLayoutItem';
 
+/**
+ * Checks props and decide if should not re-render
+ * @param {object} prevProps previous props
+ * @param {object} nextProps next props
+ * @returns {boolean}
+ */
 const shouldNotRerender = (prevProps, nextProps) => {
   return prevProps.users === nextProps.users;
 };
 
+/**
+ * User grid layout component
+ * @param {object} props component's props
+ * @param {array} props.users users data
+ * @param {function} props.onOpenModal user modal open handler
+ */
 const UsersGridLayout = memo(({ users, onOpenModal }) => {
   return (
     <Grid

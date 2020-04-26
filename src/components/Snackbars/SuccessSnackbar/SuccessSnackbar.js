@@ -3,7 +3,13 @@ import PropTypes from 'prop-types';
 
 import CommonSnackbar from '../CommonSnackbar';
 
-const SuccessSnackbar = ({ open, message }) => {
+/**
+ * Success snackbar component
+ * @param {object} props component's props
+ * @param {string} props.message message to show
+ * @param {boolean} props.open snackbar open state
+ */
+const SuccessSnackbar = ({ message, open }) => {
   return (
     <CommonSnackbar
       open={open}

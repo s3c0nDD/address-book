@@ -14,11 +14,26 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+/**
+ * Checks props and decide if should not re-render
+ * @param {object} prevProps previous props
+ * @param {object} nextProps next props
+ * @returns {boolean}
+ */
 const shouldNotRerender = (prevProps, nextProps) => {
   return prevProps.users === nextProps.users
     && prevProps.hideView === nextProps.hideView;
 };
 
+/**
+ * User grid infinite component
+ * @param {object} props component's props
+ * @param {boolean} props.hasMore has more users to fetch flag
+ * @param {array} props.users users data
+ * @param {boolean} props.hideView hide grid view flag
+ * @param {function} props.onOpenModal open user modal handler
+ * @param {function} props.onLoadMore load more users handler
+ */
 const UsersGridInfinite = memo(({
   hasMore,
   users,

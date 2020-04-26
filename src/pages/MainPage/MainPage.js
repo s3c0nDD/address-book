@@ -10,6 +10,9 @@ import UsersGridInfinite from '../../components/UsersGrids/UsersGridInfinite';
 import UsersGridSearched from '../../components/UsersGrids/UsersGridSearched';
 import UserModal from '../../components/UserModal';
 
+/**
+ * Main user's grid page component
+ */
 const MainPage = () => {
   const { user: modalUser, doOpenModal, doCloseModal } = useModalContainer();
   const { error: loadingError, hasMore, loading: loadingUsers, users, doRequestMore } = useUsersContainer();

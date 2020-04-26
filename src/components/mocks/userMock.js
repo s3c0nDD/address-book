@@ -1,3 +1,8 @@
+/**
+ * User example mock,
+ * for usage i.e. in unit tests
+ * @type {object}
+ */
 const userMock = {
   name: {
     title: 'Mr',

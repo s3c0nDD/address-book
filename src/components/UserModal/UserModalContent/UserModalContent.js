@@ -14,6 +14,11 @@ const useStyles = makeStyles({
   }
 });
 
+/**
+ * User modal content component
+ * @param {object} props component's props
+ * @param {object} props.user modal user data
+ */
 const UserModalContent = ({ user }) => {
   const classes = useStyles();
 

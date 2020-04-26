@@ -4,6 +4,11 @@ import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 
+/**
+ * User modal content typography component
+ * @param {object} props component's props
+ * @param {string} props.text text to present
+ */
 const UserModalContentTypography = ({ text }) => (
   <Typography
     variant="body2"
@@ -14,6 +19,13 @@ const UserModalContentTypography = ({ text }) => (
   </Typography>
 );
 
+/**
+ * User modal content typography grid component
+ * @param {object} props component's props
+ * @param {function} props.IconComponent icon component to present with text
+ * @param {function} props.CustomContent custom component to present with text
+ * @param {string} props.text text to present
+ */
 const UserModalContentTypographyGrid = ({ IconComponent, CustomContent, text, ...props }) => {
   return (
     <Grid container {...props}>

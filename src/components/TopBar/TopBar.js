@@ -14,10 +14,21 @@ import useMenu from '../../hooks/useMenu';
 import TopBarMenu from './TopBarMenu';
 import TopBarSearch from './TopBarSearch';
 
+/**
+ * Top bar component
+ * @param {object} props component's props
+ * @param {boolean} props.searchDisabled flag is search is disabled
+ * @param {string} props.searchText search text state
+ * @param {function} props.onSearchChange search state change handler
+ */
 const TopBar = ({ searchDisabled, searchText, onSearchChange, ...props }) => {
   const { anchorEl, isOpen, handleClose, handleOpen } = useMenu();
   const location = useLocation();
 
+  /**
+   * Handle search change
+   * @param {object<SyntheticEvent>} event react event
+   */
   const handleChange = (event) => {
     onSearchChange(event.target.value);
   };

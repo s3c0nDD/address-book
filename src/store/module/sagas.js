@@ -21,6 +21,11 @@ import {
   selectUsersCache
 } from './selectors'
 
+/**
+ * Toggle nationality flow saga
+ * @param {object} action provided action
+ * @param {string} action.payload nationality name to toggle
+ */
 export function* toggleNationalityFlow({ payload }) {
   const nationalities = yield select(selectNationalities);
   const isClickedCurrentlyOff = !nationalities[payload];
@@ -34,10 +39,17 @@ export function* toggleNationalityFlow({ payload }) {
   }
 }
 
+/**
+ * Watch nationality toggle events saga
+ */
 export function* watchNationalityClick() {
   yield takeEvery(ACTION_TYPES.NATIONALITY_TOGGLE, toggleNationalityFlow);
 }
 
+/**
+ * Search text change flow saga
+ * @param {string} payload provided new search text payload
+ */
 export function* searchTextChangeFlow(payload) {
   yield put({
     type: ACTION_TYPES.SEARCH_TEXT_SET,
@@ -67,6 +79,9 @@ export function* searchTextChangeFlow(payload) {
   });
 }
 
+/**
+ * Watch search text change events saga
+ */
 export function* watchSearchTextChange() {
   let task;
   while (true) {
@@ -78,6 +93,9 @@ export function* watchSearchTextChange() {
   }
 }
 
+/**
+ * Fetch more users flow saga
+ */
 export function* fetchUsers() {
   yield put({
     type: ACTION_TYPES.USERS_FETCHING_STARTED
@@ -107,6 +125,9 @@ export function* fetchUsers() {
   }
 }
 
+/**
+ * Bottom reached flow saga
+ */
 export function* bottomReachedFlow() {
   const usersState = yield select(selectUsers);
   const cacheState = yield select(selectUsersCache);
@@ -126,6 +147,9 @@ export function* bottomReachedFlow() {
   yield all(allEffects);
 }
 
+/**
+ * Watch bottom reached events saga
+ */
 export function* watchBottomReached() {
   while (true) {
     yield all([
@@ -136,6 +160,9 @@ export function* watchBottomReached() {
   }
 }
 
+/**
+ * Watch initialize events saga
+ */
 export function* watchInitialize() {
   while (true) {
     const [initialize, nationalitySet] = yield race([
@@ -153,6 +180,9 @@ export function* watchInitialize() {
   }
 }
 
+/**
+ * Root saga
+ */
 export default function* rootSaga() {
   yield all([
     watchInitialize(),

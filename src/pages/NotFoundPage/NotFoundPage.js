@@ -13,7 +13,10 @@ const useStyles = makeStyles({
   }
 });
 
-const UsersGrid = () => {
+/**
+ * Not found page component
+ */
+const NotFoundPage = () => {
   const classes = useStyles();
 
   return (
@@ -36,4 +39,4 @@ const UsersGrid = () => {
   );
 };
 
-export default UsersGrid;
+export default NotFoundPage;

@@ -29,13 +29,28 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+/**
+ * Checks props and decide if should not re-render
+ * @param {object} prevProps previous props
+ * @param {object} nextProps next props
+ * @returns {boolean}
+ */
 const shouldNotRerender = (prevProps, nextProps) => {
   return prevProps.user === nextProps.user;
 };
 
+/**
+ * User grid layout item component
+ * @param {object} props component's props
+ * @param {object} props.user user data
+ * @param {function} props.onOpenModal user modal open handler
+ */
 const UsersGridLayoutItem = memo(({ user, onOpenModal }) => {
   const classes = useStyles();
 
+  /**
+   * Handle grid layout item media click
+   */
   const handleClick = () => {
     onOpenModal(user);
   };
